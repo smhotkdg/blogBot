@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>갤럭시 글자 크게 하는 법｜글자 크기와 화면 크기, 무엇을 바꿔야 편할까? — 복사용 완성본</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F4F2EE; font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; color: #222; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 80px; }
+  .bar { position: sticky; top: 0; z-index: 10; background: #1F2A44; color: #fff; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+  .bar button { font-size: 15px; font-weight: 700; padding: 10px 14px; border: 0; border-radius: 8px; background: #F26B1D; color: #fff; cursor: pointer; }
+  .bar button.sub { background: #fff; color: #1F2A44; }
+  .toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: #1F2A44; color: #fff; padding: 12px 20px; border-radius: 999px; font-size: 15px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .toast.on { opacity: 1; }
+  .card { background: #fff; border-radius: 14px; padding: 22px; margin: 0 0 18px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .card h2.label { font-size: 14px; letter-spacing: .02em; color: #888; margin: 0 0 10px; font-weight: 700; }
+  .warnbox { background: #FFF4EC; border: 2px solid #F26B1D; }
+  .okbox { background: #EEF8F0; border: 2px solid #3A9B57; }
+  .title { font-size: 24px; font-weight: 800; line-height: 1.5; margin: 0; }
+  .tags { font-size: 16px; color: #555; margin: 0; word-break: keep-all; }
+  .figure { margin: 22px 0; text-align: center; }
+  .figure img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #eee; }
+  .figure .meta { font-size: 14px; color: #666; margin-top: 8px; line-height: 1.6; }
+  .figure a { display: inline-block; margin-top: 6px; font-size: 14px; font-weight: 700; color: #F26B1D; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .grid div { text-align: center; font-size: 13px; color: #555; }
+  .grid img { width: 100%; height: 120px; object-fit: contain; background: #fafafa; border-radius: 6px; border: 1px solid #eee; }
+  ul.check { margin: 6px 0 0; padding-left: 22px; line-height: 1.8; font-size: 15px; }
+  .hint { font-size: 14px; color: #666; line-height: 1.7; margin: 8px 0 0; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <button onclick="copyText('title')">제목 복사</button>
+  <button onclick="copyRich()">본문 서식 복사</button>
+  <button class="sub" onclick="copyText('plain')">본문 텍스트만 복사</button>
+  <button class="sub" onclick="copyText('tags')">태그 복사</button>
+</div>
+<div class="wrap">
+  <div class="card warnbox"><h2 class="label">발행 전 확인 필요</h2><p class="hint">기준: 갤럭시 S24 · One UI 8.5. 내 폰으로 아래 항목을 확인한 뒤 post.md의 <b>checked</b>를 true로 바꿔 주세요.</p><ul class="check"><li>설정 &gt; 디스플레이 안에 &#x27;글자 크기와 스타일&#x27;, &#x27;화면 크게/작게&#x27;, &#x27;쉬운 사용 모드&#x27;가 이 이름 그대로 있는지</li><li>글자 크기와 스타일 화면에 &#x27;굵은 글꼴&#x27; 스위치가 이 이름으로 있는지</li><li>화면 크게/작게를 바꿀 때 확인 창이 뜨는지 (뜨면 본문 2-④ 뒤에 한 줄 추가)</li><li>설정 맨 위 검색에서 &#x27;글자 크기&#x27;를 입력하면 바로 찾아지는지</li></ul></div>
+<div class="card warnbox"><h2 class="label">그림 6장 대기 중</h2><p class="hint">GPT에게 <b>dist/2026-11-galaxy-text-size/gpt_prompt.md</b> 내용을 붙여 넣거나, 레포의 AGENTS.md를 따르게 하세요. 그림은 posts/2026-11-galaxy-text-size/images/ 에 올리면 됩니다.</p></div>
+  <div class="card">
+    <h2 class="label">제목</h2>
+    <p class="title">갤럭시 글자 크게 하는 법｜글자 크기와 화면 크기, 무엇을 바꿔야 편할까?</p>
+  </div>
+  <div class="card">
+    <h2 class="label">태그</h2>
+    <p class="tags">#갤럭시글자크기 #갤럭시글씨크게 #휴대폰글씨크게 #화면크게작게 #부모님폰설정 #갤럭시설정 #생활디지털</p>
+  </div>
+  <div class="card">
+    <h2 class="label">그림 6장 — 번호 순서대로 저장해서 [그림 N] 자리에 넣으세요 (0장 준비됨)</h2>
+    <div class="grid"><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjEwODAiIHZpZXdCb3g9IjAgMCAxMDgwIDEwODAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjEwNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDEg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMS5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 1<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEyMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjExNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDIg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMi5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 2<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDMg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMy5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 3<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDQg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwNC5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 4<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDUg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwNS5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 5<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEyMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjExNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDYg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwNi5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 6<br>대기</div></div>
+  </div>
+  <div class="card">
+    <h2 class="label">본문 미리보기 — 「본문 서식 복사」는 그림 자리를 [그림 N] 표시로 바꿔 복사합니다</h2>
+    <div id="preview"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">휴대폰 글씨가 작아서 눈을 찡그리거나 안경을 찾게 될 때가 있지요. 갤럭시에는 글씨를 크게 하는 방법이 두 가지 있는데, 이름이 비슷해서 무엇을 바꿔야 할지 헷갈립니다. 이 글을 따라 하면 <strong style="font-weight:700;color:#F26B1D;">3분 안에</strong> 내 눈에 맞는 크기로 바꿀 수 있습니다.</p>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjEwODAiIHZpZXdCb3g9IjAgMCAxMDgwIDEwODAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjEwNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDEg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMS5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="갤럭시 휴대폰 글씨를 크게 바꾸는 방법 대표 이미지"><div class="meta">[그림 1] <br>대체 텍스트: 갤럭시 휴대폰 글씨를 크게 바꾸는 방법 대표 이미지</div></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">먼저 결론부터</h2>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글씨만 작게 느껴지면</strong> → <strong style="font-weight:700;color:#F26B1D;">글자 크기</strong>를 키우세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글씨뿐 아니라 버튼·아이콘도 작아서 누르기 어려우면</strong> → <strong style="font-weight:700;color:#F26B1D;">화면 크게/작게</strong>를 키우세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">잘 모르겠다면 <strong style="font-weight:700;color:#F26B1D;">글자 크기를 먼저 한두 칸</strong> 키워 보고, 그래도 불편하면 화면 크기를 한 칸 키우세요.</li>
+</ul>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEyMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjExNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDIg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMi5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="글자 크기는 글씨만, 화면 크게/작게는 아이콘과 버튼까지 커지는 차이를 비교한 그림"><div class="meta">[그림 2] 글자 크기는 글씨만, 화면 크게/작게는 전부 커집니다<br>대체 텍스트: 글자 크기는 글씨만, 화면 크게/작게는 아이콘과 버튼까지 커지는 차이를 비교한 그림</div></div>
+<div style="background:#FFF4EC;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">💡 팁: 이 글은 <strong style="font-weight:700;color:#F26B1D;">갤럭시 S24 · One UI 8.5</strong> 기준입니다. 기종에 따라 메뉴 이름이 조금 다를 수 있어요. 메뉴를 못 찾겠다면 <strong style="font-weight:700;color:#F26B1D;">설정</strong> 맨 위의 <strong style="font-weight:700;color:#F26B1D;">돋보기 모양 버튼</strong>을 누르고 "글자 크기"라고 입력하세요.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">1. 글자 크기 키우기</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">글자만 커지고, 화면 배치는 그대로입니다.</p>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">홈 화면에서 톱니바퀴 모양의 <strong style="font-weight:700;color:#F26B1D;">설정</strong>을 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">아래로 내려서 <strong style="font-weight:700;color:#F26B1D;">디스플레이</strong>를 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글자 크기와 스타일</strong>을 누릅니다.</li>
+</ol>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDMg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMy5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="설정에서 디스플레이를 누르고 글자 크기와 스타일을 누르는 순서"><div class="meta">[그림 3] 설정 → 디스플레이 → 글자 크기와 스타일<br>대체 텍스트: 설정에서 디스플레이를 누르고 글자 크기와 스타일을 누르는 순서</div></div>
+<ol start="4" style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">화면 아래쪽의 <strong style="font-weight:700;color:#F26B1D;">글자 크기</strong> 막대를 손가락으로 <strong style="font-weight:700;color:#F26B1D;">오른쪽</strong>으로 밉니다. 한 칸씩 밀면서 위쪽 예시 글자를 확인하세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">글씨가 흐릿하게 보이면 <strong style="font-weight:700;color:#F26B1D;">굵은 글꼴</strong> 스위치를 켭니다. 글씨가 진해져서 훨씬 잘 보입니다.</li>
+</ol>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDQg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwNC5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="글자 크기 막대를 오른쪽으로 밀고 굵은 글꼴 스위치를 켜는 화면"><div class="meta">[그림 4] 막대를 오른쪽으로 밀고, 흐릿하면 굵은 글꼴을 켜세요<br>대체 텍스트: 글자 크기 막대를 오른쪽으로 밀고 굵은 글꼴 스위치를 켜는 화면</div></div>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">이렇게 되면 끝!</strong> 뒤로 가기를 누르고 카카오톡이나 문자를 열어 보세요. 글씨가 커져 있으면 성공입니다.</p>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: 가장 큰 크기는 일부 앱에서 지원되지 않아 한 단계 작은 크기로 보일 수 있습니다. 고장이 아니니 걱정하지 않으셔도 됩니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">2. 화면 크게/작게 키우기</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">글자뿐 아니라 <strong style="font-weight:700;color:#F26B1D;">아이콘, 버튼, 메뉴까지 전부</strong> 커집니다. 손가락으로 누르기가 편해집니다.</p>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">설정</strong>을 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">디스플레이</strong>를 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">화면 크게/작게</strong>를 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">화면 아래쪽 막대를 <strong style="font-weight:700;color:#F26B1D;">오른쪽</strong>으로 한 칸 밉니다. 위쪽 예시 화면이 바로 커집니다.</li>
+</ol>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDUg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwNS5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="화면 크게/작게 막대를 오른쪽으로 한 칸 미는 화면"><div class="meta">[그림 5] 한 칸씩 밀면서 편한 크기를 찾으세요<br>대체 텍스트: 화면 크게/작게 막대를 오른쪽으로 한 칸 미는 화면</div></div>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">이렇게 되면 끝!</strong> 홈 화면으로 나가 보세요. 앱 아이콘과 글씨가 함께 커져 있으면 성공입니다.</p>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: 너무 크게 하면 한 화면에 보이는 내용이 줄어서 위아래로 더 많이 밀어야 합니다. 한 칸씩 바꾸면서 편한 크기를 찾으세요.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">3. 나에게 맞는 방법 고르기</h2>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEyMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjExNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDYg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwNi5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="글씨가 작으면 글자 크기, 버튼도 작으면 화면 크게/작게, 흐리면 굵은 글꼴을 고르라는 정리 도표"><div class="meta">[그림 6] <br>대체 텍스트: 글씨가 작으면 글자 크기, 버튼도 작으면 화면 크게/작게, 흐리면 굵은 글꼴을 고르라는 정리 도표</div></div>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">신문 글씨가 작게 느껴지는 정도</strong> → 글자 크기만 2~3칸</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글씨도 작고 버튼도 자꾸 잘못 눌림</strong> → 글자 크기 1~2칸 + 화면 크게/작게 1칸</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글씨가 흐릿하게 보임</strong> → 크기보다 <strong style="font-weight:700;color:#F26B1D;">굵은 글꼴</strong>을 먼저 켜 보기</li>
+</ul>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">4. 그래도 작다면: 쉬운 사용 모드</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">설정 → 디스플레이 → 쉬운 사용 모드</strong>를 켜면 글자와 아이콘이 한꺼번에 크게 바뀌고, 홈 화면도 단순해집니다.</p>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: 쉬운 사용 모드를 켜고 끄면 홈 화면 배치가 바뀔 수 있습니다. 켜기 전에 지금 홈 화면을 <strong style="font-weight:700;color:#F26B1D;">캡처해 두면</strong> 나중에 원래대로 되돌리기 쉽습니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">원래대로 되돌리고 싶을 때</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">같은 메뉴에 다시 들어가서 막대를 <strong style="font-weight:700;color:#F26B1D;">가운데</strong>로 옮기면 됩니다. 두 막대 모두 가운데가 처음 설정입니다.</p>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">부모님 폰을 설정해 드리는 자녀분께</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">막대는 직접 옮겨 드리기보다 <strong style="font-weight:700;color:#F26B1D;">부모님이 직접 한 칸씩 밀어 보시게</strong> 하는 것이 좋습니다. 보시는 분 눈에 편한 크기가 가장 정확하고, 다음에 혼자서도 바꾸실 수 있습니다.</p>
+<hr style="border:none;border-top:1px solid #ddd;margin:32px 0;" />
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">글자 크기와 화면 크기, 여러분은 어느 쪽을 바꿨을 때 더 편하셨나요? 여러분의 경험이 궁금합니다.</p></div>
+  </div>
+</div>
+<div id="copy-src" style="position:absolute;left:-99999px;top:0;width:700px;" aria-hidden="true"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">휴대폰 글씨가 작아서 눈을 찡그리거나 안경을 찾게 될 때가 있지요. 갤럭시에는 글씨를 크게 하는 방법이 두 가지 있는데, 이름이 비슷해서 무엇을 바꿔야 할지 헷갈립니다. 이 글을 따라 하면 <strong style="font-weight:700;color:#F26B1D;">3분 안에</strong> 내 눈에 맞는 크기로 바꿀 수 있습니다.</p>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 1] 이 자리에 그림을 넣으세요</p>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">먼저 결론부터</h2>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글씨만 작게 느껴지면</strong> → <strong style="font-weight:700;color:#F26B1D;">글자 크기</strong>를 키우세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글씨뿐 아니라 버튼·아이콘도 작아서 누르기 어려우면</strong> → <strong style="font-weight:700;color:#F26B1D;">화면 크게/작게</strong>를 키우세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">잘 모르겠다면 <strong style="font-weight:700;color:#F26B1D;">글자 크기를 먼저 한두 칸</strong> 키워 보고, 그래도 불편하면 화면 크기를 한 칸 키우세요.</li>
+</ul>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 2] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">글자 크기는 글씨만, 화면 크게/작게는 전부 커집니다</p>
+<div style="background:#FFF4EC;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">💡 팁: 이 글은 <strong style="font-weight:700;color:#F26B1D;">갤럭시 S24 · One UI 8.5</strong> 기준입니다. 기종에 따라 메뉴 이름이 조금 다를 수 있어요. 메뉴를 못 찾겠다면 <strong style="font-weight:700;color:#F26B1D;">설정</strong> 맨 위의 <strong style="font-weight:700;color:#F26B1D;">돋보기 모양 버튼</strong>을 누르고 "글자 크기"라고 입력하세요.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">1. 글자 크기 키우기</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">글자만 커지고, 화면 배치는 그대로입니다.</p>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">홈 화면에서 톱니바퀴 모양의 <strong style="font-weight:700;color:#F26B1D;">설정</strong>을 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">아래로 내려서 <strong style="font-weight:700;color:#F26B1D;">디스플레이</strong>를 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글자 크기와 스타일</strong>을 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 3] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">설정 → 디스플레이 → 글자 크기와 스타일</p>
+<ol start="4" style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">화면 아래쪽의 <strong style="font-weight:700;color:#F26B1D;">글자 크기</strong> 막대를 손가락으로 <strong style="font-weight:700;color:#F26B1D;">오른쪽</strong>으로 밉니다. 한 칸씩 밀면서 위쪽 예시 글자를 확인하세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">글씨가 흐릿하게 보이면 <strong style="font-weight:700;color:#F26B1D;">굵은 글꼴</strong> 스위치를 켭니다. 글씨가 진해져서 훨씬 잘 보입니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 4] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">막대를 오른쪽으로 밀고, 흐릿하면 굵은 글꼴을 켜세요</p>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">이렇게 되면 끝!</strong> 뒤로 가기를 누르고 카카오톡이나 문자를 열어 보세요. 글씨가 커져 있으면 성공입니다.</p>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: 가장 큰 크기는 일부 앱에서 지원되지 않아 한 단계 작은 크기로 보일 수 있습니다. 고장이 아니니 걱정하지 않으셔도 됩니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">2. 화면 크게/작게 키우기</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">글자뿐 아니라 <strong style="font-weight:700;color:#F26B1D;">아이콘, 버튼, 메뉴까지 전부</strong> 커집니다. 손가락으로 누르기가 편해집니다.</p>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">설정</strong>을 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">디스플레이</strong>를 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">화면 크게/작게</strong>를 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">화면 아래쪽 막대를 <strong style="font-weight:700;color:#F26B1D;">오른쪽</strong>으로 한 칸 밉니다. 위쪽 예시 화면이 바로 커집니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 5] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">한 칸씩 밀면서 편한 크기를 찾으세요</p>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">이렇게 되면 끝!</strong> 홈 화면으로 나가 보세요. 앱 아이콘과 글씨가 함께 커져 있으면 성공입니다.</p>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: 너무 크게 하면 한 화면에 보이는 내용이 줄어서 위아래로 더 많이 밀어야 합니다. 한 칸씩 바꾸면서 편한 크기를 찾으세요.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">3. 나에게 맞는 방법 고르기</h2>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 6] 이 자리에 그림을 넣으세요</p>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">신문 글씨가 작게 느껴지는 정도</strong> → 글자 크기만 2~3칸</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글씨도 작고 버튼도 자꾸 잘못 눌림</strong> → 글자 크기 1~2칸 + 화면 크게/작게 1칸</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">글씨가 흐릿하게 보임</strong> → 크기보다 <strong style="font-weight:700;color:#F26B1D;">굵은 글꼴</strong>을 먼저 켜 보기</li>
+</ul>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">4. 그래도 작다면: 쉬운 사용 모드</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">설정 → 디스플레이 → 쉬운 사용 모드</strong>를 켜면 글자와 아이콘이 한꺼번에 크게 바뀌고, 홈 화면도 단순해집니다.</p>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: 쉬운 사용 모드를 켜고 끄면 홈 화면 배치가 바뀔 수 있습니다. 켜기 전에 지금 홈 화면을 <strong style="font-weight:700;color:#F26B1D;">캡처해 두면</strong> 나중에 원래대로 되돌리기 쉽습니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">원래대로 되돌리고 싶을 때</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">같은 메뉴에 다시 들어가서 막대를 <strong style="font-weight:700;color:#F26B1D;">가운데</strong>로 옮기면 됩니다. 두 막대 모두 가운데가 처음 설정입니다.</p>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">부모님 폰을 설정해 드리는 자녀분께</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">막대는 직접 옮겨 드리기보다 <strong style="font-weight:700;color:#F26B1D;">부모님이 직접 한 칸씩 밀어 보시게</strong> 하는 것이 좋습니다. 보시는 분 눈에 편한 크기가 가장 정확하고, 다음에 혼자서도 바꾸실 수 있습니다.</p>
+<hr style="border:none;border-top:1px solid #ddd;margin:32px 0;" />
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">글자 크기와 화면 크기, 여러분은 어느 쪽을 바꿨을 때 더 편하셨나요? 여러분의 경험이 궁금합니다.</p></div>
+<div class="toast" id="toast"></div>
+<script>
+const DATA = {"title": "갤럭시 글자 크게 하는 법｜글자 크기와 화면 크기, 무엇을 바꿔야 편할까?", "tags": "#갤럭시글자크기 #갤럭시글씨크게 #휴대폰글씨크게 #화면크게작게 #부모님폰설정 #갤럭시설정 #생활디지털", "plain": "휴대폰 글씨가 작아서 눈을 찡그리거나 안경을 찾게 될 때가 있지요. 갤럭시에는 글씨를 크게 하는 방법이 두 가지 있는데, 이름이 비슷해서 무엇을 바꿔야 할지 헷갈립니다. 이 글을 따라 하면 3분 안에 내 눈에 맞는 크기로 바꿀 수 있습니다.\n\n[그림 1]\n\n먼저 결론부터\n\n- 글씨만 작게 느껴지면 → 글자 크기를 키우세요.\n- 글씨뿐 아니라 버튼·아이콘도 작아서 누르기 어려우면 → 화면 크게/작게를 키우세요.\n- 잘 모르겠다면 글자 크기를 먼저 한두 칸 키워 보고, 그래도 불편하면 화면 크기를 한 칸 키우세요.\n\n[그림 2] 글자 크기는 글씨만, 화면 크게/작게는 전부 커집니다\n\n💡 팁: 이 글은 갤럭시 S24 · One UI 8.5 기준입니다. 기종에 따라 메뉴 이름이 조금 다를 수 있어요. 메뉴를 못 찾겠다면 설정 맨 위의 돋보기 모양 버튼을 누르고 \"글자 크기\"라고 입력하세요.\n\n1. 글자 크기 키우기\n\n글자만 커지고, 화면 배치는 그대로입니다.\n\n1. 홈 화면에서 톱니바퀴 모양의 설정을 누릅니다.\n2. 아래로 내려서 디스플레이를 누릅니다.\n3. 글자 크기와 스타일을 누릅니다.\n\n[그림 3] 설정 → 디스플레이 → 글자 크기와 스타일\n\n4. 화면 아래쪽의 글자 크기 막대를 손가락으로 오른쪽으로 밉니다. 한 칸씩 밀면서 위쪽 예시 글자를 확인하세요.\n5. 글씨가 흐릿하게 보이면 굵은 글꼴 스위치를 켭니다. 글씨가 진해져서 훨씬 잘 보입니다.\n\n[그림 4] 막대를 오른쪽으로 밀고, 흐릿하면 굵은 글꼴을 켜세요\n\n이렇게 되면 끝! 뒤로 가기를 누르고 카카오톡이나 문자를 열어 보세요. 글씨가 커져 있으면 성공입니다.\n\n⚠️ 주의: 가장 큰 크기는 일부 앱에서 지원되지 않아 한 단계 작은 크기로 보일 수 있습니다. 고장이 아니니 걱정하지 않으셔도 됩니다.\n\n2. 화면 크게/작게 키우기\n\n글자뿐 아니라 아이콘, 버튼, 메뉴까지 전부 커집니다. 손가락으로 누르기가 편해집니다.\n\n1. 설정을 누릅니다.\n2. 디스플레이를 누릅니다.\n3. 화면 크게/작게를 누릅니다.\n4. 화면 아래쪽 막대를 오른쪽으로 한 칸 밉니다. 위쪽 예시 화면이 바로 커집니다.\n\n[그림 5] 한 칸씩 밀면서 편한 크기를 찾으세요\n\n이렇게 되면 끝! 홈 화면으로 나가 보세요. 앱 아이콘과 글씨가 함께 커져 있으면 성공입니다.\n\n⚠️ 주의: 너무 크게 하면 한 화면에 보이는 내용이 줄어서 위아래로 더 많이 밀어야 합니다. 한 칸씩 바꾸면서 편한 크기를 찾으세요.\n\n3. 나에게 맞는 방법 고르기\n\n[그림 6]\n\n- 신문 글씨가 작게 느껴지는 정도 → 글자 크기만 2~3칸\n- 글씨도 작고 버튼도 자꾸 잘못 눌림 → 글자 크기 1~2칸 + 화면 크게/작게 1칸\n- 글씨가 흐릿하게 보임 → 크기보다 굵은 글꼴을 먼저 켜 보기\n\n4. 그래도 작다면: 쉬운 사용 모드\n\n설정 → 디스플레이 → 쉬운 사용 모드를 켜면 글자와 아이콘이 한꺼번에 크게 바뀌고, 홈 화면도 단순해집니다.\n\n⚠️ 주의: 쉬운 사용 모드를 켜고 끄면 홈 화면 배치가 바뀔 수 있습니다. 켜기 전에 지금 홈 화면을 캡처해 두면 나중에 원래대로 되돌리기 쉽습니다.\n\n원래대로 되돌리고 싶을 때\n\n같은 메뉴에 다시 들어가서 막대를 가운데로 옮기면 됩니다. 두 막대 모두 가운데가 처음 설정입니다.\n\n부모님 폰을 설정해 드리는 자녀분께\n\n막대는 직접 옮겨 드리기보다 부모님이 직접 한 칸씩 밀어 보시게 하는 것이 좋습니다. 보시는 분 눈에 편한 크기가 가장 정확하고, 다음에 혼자서도 바꾸실 수 있습니다.\n\n글자 크기와 화면 크기, 여러분은 어느 쪽을 바꿨을 때 더 편하셨나요? 여러분의 경험이 궁금합니다.\n"};
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(window.__t); window.__t = setTimeout(() => t.classList.remove('on'), 1800);
+}
+function fallbackCopy(node) {
+  const sel = window.getSelection(); const range = document.createRange();
+  range.selectNodeContents(node); sel.removeAllRanges(); sel.addRange(range);
+  let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+  sel.removeAllRanges(); return ok;
+}
+async function copyText(key) {
+  const text = DATA[key];
+  try { await navigator.clipboard.writeText(text); toast('복사했습니다'); return; } catch (e) {}
+  const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
+  ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+  ta.remove(); toast(ok ? '복사했습니다' : '복사에 실패했습니다. 직접 선택해 복사해 주세요');
+}
+async function copyRich() {
+  const node = document.getElementById('copy-src');
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([node.innerHTML], {type: 'text/html'}),
+      'text/plain': new Blob([DATA.plain], {type: 'text/plain'})
+    })]);
+    toast('본문을 서식과 함께 복사했습니다'); return;
+  } catch (e) {}
+  toast(fallbackCopy(node) ? '본문을 서식과 함께 복사했습니다' : '복사에 실패했습니다');
+}
+</script>
+</body>
+</html>
