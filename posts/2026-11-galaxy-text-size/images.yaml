@@ -125,9 +125,9 @@ images:
     file: photo-02.jpg
     type: photo
     size: 1600x1067
-    pick:
+    pick: 5
     caption: 버튼이 자꾸 잘못 눌린다면 화면 크기를 키워 보세요
-    alt: 손가락으로 휴대폰 화면을 누르는 모습
+    alt: 안경을 쓰고 휴대폰 화면을 가까이 들여다보는 모습
     candidates:
       - source: unsplash
         id: "6Md8RJCL7x4"
