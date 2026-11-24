@@ -40,6 +40,8 @@ images:
     file: 03.png
     type: screen-guide
     size: 1080x1920
+    crop: "1:1"
+    crop_y: 0.5
     text:
       - "디스플레이"
       - "글자 크기와 스타일"
