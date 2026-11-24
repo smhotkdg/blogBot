@@ -7,7 +7,7 @@
 1. `STATUS.md`에서 그림 상태가 `대기`인 글을 찾습니다.
 2. 그 글의 `posts/<글>/images.yaml`과 `docs/image-guide.md`를 읽습니다.
    - `post.md`도 읽어서 그림이 들어갈 앞뒤 문맥을 확인합니다.
-3. `images.yaml`의 항목마다 그림을 하나씩 만듭니다. **`type: photo` 항목은 실사 사진 칸이므로 건너뜁니다.**
+3. `images.yaml`의 항목마다 그림을 하나씩 만듭니다. **`type: photo`(실사 사진)와 `type: capture`(실제 화면 캡처) 항목은 건너뜁니다.**
    - `prompt`가 내용, `type`이 스타일 규칙(`docs/image-guide.md`), `text`가 그림에 들어갈 글자입니다.
    - `text`에 없는 글자는 넣지 않습니다. 있는 글자는 철자 그대로 넣습니다.
 4. 파일을 `posts/<글>/images/<file>` 이름 그대로 저장합니다.

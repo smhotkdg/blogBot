@@ -101,7 +101,7 @@ def data_uri(path: Path) -> str:
 
 def placeholder_uri(num: int, item: dict) -> str:
     w, h = (int(v) for v in str(item.get("size", "1600x1200")).split("x"))
-    who = "사진 내려받기 대기" if item.get("type") == "photo" else "GPT 작업 대기"
+    who = {"photo": "사진 내려받기 대기", "capture": "직접 캡처 대기"}.get(item.get("type"), "GPT 작업 대기")
     label = html.escape(f"그림 {num} — {who} ({item['file']})")
     svg = (
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">'
@@ -172,8 +172,8 @@ def gpt_prompt(meta: dict, spec: dict, post_md: str) -> str:
         "",
     ]
     for item in spec.get("images", []):
-        if item.get("type") == "photo":
-            continue  # 실사 사진은 GPT 담당이 아님
+        if item.get("type") in ("photo", "capture"):
+            continue  # 실사 사진·실제 화면 캡처는 GPT 담당이 아님
         lines += [
             f"### {item['file']} ({item['type']}, {item.get('size', '')})",
             "",
@@ -331,7 +331,7 @@ def build(post_dir: Path) -> dict:
         alt = item.get("alt") or ""
         cap_full = f"{cap} ({credit})" if cap and credit else (cap or credit)
         caps[sid] = cap_full
-        if not path and item.get("type") != "photo":
+        if not path and item.get("type") not in ("photo", "capture"):
             gpt_waiting += 1
         dl = f'<a href="{uri}" download="{fname}">그림 {n} 내려받기</a>' if fname else ""
         fig = (
