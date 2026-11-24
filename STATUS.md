@@ -4,7 +4,7 @@
 
 | 글 | 원고 | 그림 | 사람 확인 | 완성본 | 메모 |
 |---|---|---|---|---|---|
-| [2026-11-health-insurance-refund](posts/2026-11-health-insurance-refund/post.md) 건강보험 환급금 조회·신청 | 완료 | GPT 그림·실사풍 대기 (0/5) · 실사 완료 (1/1) | 대기 | 그림 없이 빌드됨 | 메뉴 이름 확인 권장 (post.md `verify`) |
+| [2026-11-health-insurance-refund](posts/2026-11-health-insurance-refund/post.md) 건강보험 환급금 조회·신청 | 완료 | 완료 (6/6, 대표 이미지는 임시본) | 대기 | **완성** | 대표 이미지 GPT 본으로 교체 가능(01.png 덮어쓰기). 메뉴 이름 확인 권장 |
 | [2026-11-galaxy-text-size](posts/2026-11-galaxy-text-size/post.md) 갤럭시 글자 크게 하는 법 | 완료 | GPT 그림·실사풍 대기 (0/8) · 실사 완료 (1/1) | 대기 | 그림 없이 빌드됨 | 메뉴 이름 4가지 확인 필요 (post.md `verify`) |
 
 ## 다음 글 (상세: [docs/topic-plan.md](docs/topic-plan.md))

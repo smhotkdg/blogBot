@@ -100,6 +100,22 @@ def credit_text(c: dict | None) -> str:
     return f"사진: {author} / {src}" if author else f"사진: {src}"
 
 
+def cropped_uri(path: Path, ratio: str, focus_y: float = 0.5) -> str:
+    """사진을 가운데 기준으로 원하는 비율(예: '4:3')로 잘라 data URI로 만든다."""
+    import io
+    from PIL import Image
+    rw, rh = (float(v) for v in ratio.split(":"))
+    im = Image.open(path).convert("RGB")
+    w, h = im.size
+    target = rw / rh
+    if w / h > target:  # 너무 넓음 → 좌우 자르기
+        nw = int(h * target); x = (w - nw) // 2; box = (x, 0, x + nw, h)
+    else:               # 너무 높음 → 위아래 자르기
+        nh = int(w / target); y = int((h - nh) * min(max(focus_y, 0), 1)); box = (0, y, w, y + nh)
+    buf = io.BytesIO(); im.crop(box).save(buf, "JPEG", quality=88)
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
 def data_uri(path: Path) -> str:
     mime = mimetypes.guess_type(path.name)[0] or "image/png"
     return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
@@ -376,7 +392,11 @@ def build(post_dir: Path) -> dict:
                 credit = "AI 생성 이미지"
         if path:
             ready += 1
-            uri, fname = data_uri(path), f"{n:02d}_{path.name}"
+            if item.get("crop"):
+                uri = cropped_uri(path, str(item["crop"]), float(item.get("crop_y", 0.5)))
+                fname = f"{n:02d}_{Path(item['file']).stem}.jpg"
+            else:
+                uri, fname = data_uri(path), f"{n:02d}_{path.name}"
         else:
             uri, fname = placeholder_uri(n, item), None
         cap = item.get("caption") or ""

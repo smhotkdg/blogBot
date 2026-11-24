@@ -85,6 +85,8 @@ images:
     type: photo
     size: 1600x1067
     pick: 4
+    crop: "4:3"
+    crop_y: 0.35
     caption: 휴대폰 하나면 공단에 가지 않아도 됩니다
     alt: 손에 든 안드로이드 휴대폰
     candidates:

@@ -48,6 +48,7 @@
 ### `photo` (실사 사진) — 무료 사진 사이트에서
 
 - 쓸 수 있는 곳: **Unsplash(무료 표시된 사진만, Unsplash+ 제외)**, **Pexels**, **Pixabay**. 상업적 이용 가능, 출처는 자동 표기.
+- 세로로 긴 사진은 요청서에 `crop: "4:3"`(필요하면 `crop_y: 0~1`, 위아래 자를 위치)을 적으면 완성본에서 잘라 쓴다.
 - Unsplash 후보에는 `url`(images.unsplash.com 직접 주소)을 꼭 적는다. 다운로드 버튼 주소는 로그인이 필요해 Actions에서 받을 수 없다.
 - 주로 쓰는 장면: 휴대폰을 든 손·누르는 손가락, 갤럭시 등 휴대폰 실물, 식탁 위 휴대폰과 서류.
 - 쓰지 않는 곳: 유료 스톡(Getty, Adobe Stock, Shutterstock, iStock, Alamy), 언론 보도 사진, 라이선스가 불분명한 검색 이미지. PAKUTASO는 일본어 연락 가능 조건이 있어 쓰지 않음.
