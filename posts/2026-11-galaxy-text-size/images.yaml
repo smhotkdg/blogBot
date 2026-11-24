@@ -132,18 +132,27 @@ images:
       - source: unsplash
         id: "6Md8RJCL7x4"
         page: https://unsplash.com/photos/a-person-sitting-at-a-table-with-a-cell-phone-6Md8RJCL7x4
+        url: https://images.unsplash.com/photo-1738830256741-5bc3d0d1571c?fm=jpg&q=80&w=1600&fit=max
+        author: Amanz
       - source: unsplash
         id: "egQsaCPGh4g"
         page: https://unsplash.com/photos/person-holding-black-samsung-android-smartphone-egQsaCPGh4g
+        url: https://images.unsplash.com/photo-1627512322769-85cb8e944bef?fm=jpg&q=80&w=1600&fit=max
+        author: ManuelTheLensman
       - source: unsplash
         id: "QQ2d5naZee0"
         page: https://unsplash.com/photos/person-holding-black-android-smartphone-QQ2d5naZee0
+        url: https://images.unsplash.com/photo-1584091377126-3817650725fc?fm=jpg&q=80&w=1600&fit=max
+        author: Jonas Leupe
       - source: unsplash
         id: "ac29xaXZYAM"
         page: https://unsplash.com/photos/a-close-up-of-a-person-holding-a-cell-phone-ac29xaXZYAM
+        url: https://images.unsplash.com/photo-1685435853901-6929169b6bf1?fm=jpg&q=80&w=1600&fit=max
+        author: Kateryna Hliznitsova
       - source: unsplash
         id: "-kZuiNDU5IY"
         page: https://unsplash.com/photos/a-close-up-of-a-person-holding-a-cell-phone--kZuiNDU5IY
+        url: https://images.unsplash.com/photo-1693681866234-9a356241cc24?fm=jpg&q=80&w=1600&fit=max
         author: Yazid N
 
   - id: photo-03

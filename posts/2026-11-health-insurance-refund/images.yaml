@@ -125,16 +125,22 @@ images:
       - source: unsplash
         id: "-16na5rDDRk"
         page: https://unsplash.com/photos/person-holding-black-samsung-android-smartphone--16na5rDDRk
+        url: https://images.unsplash.com/photo-1625217527288-93919c99650a?fm=jpg&q=80&w=1600&fit=max
+        author: Maxim Hopman
       - source: unsplash
         id: "MsXrapwmfwE"
         page: https://unsplash.com/photos/person-showing-black-samsung-galaxy-android-smartphone-MsXrapwmfwE
+        url: https://images.unsplash.com/photo-1507518493903-7f5b3e4ba265?fm=jpg&q=80&w=1600&fit=max
         author: Ernesto Leon
       - source: unsplash
         id: "fbT_sJEpYOo"
         page: https://unsplash.com/photos/a-close-up-of-a-cell-phone-near-a-sign-fbT_sJEpYOo
+        url: https://images.unsplash.com/photo-1721864428916-254eea9ca04a?fm=jpg&q=80&w=1600&fit=max
+        author: Evgeny Opanasenko
       - source: unsplash
         id: "qIHd1KMBU4w"
         page: https://unsplash.com/photos/qIHd1KMBU4w
+        url: https://images.unsplash.com/photo-1756883280166-942ef0a8e009?fm=jpg&q=80&w=1600&fit=max
         author: Macro.jr
 
   - id: photo-02
