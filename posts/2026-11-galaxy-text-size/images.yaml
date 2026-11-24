@@ -115,9 +115,9 @@ images:
     file: photo-01.jpg
     type: photo
     size: 1600x1067
-    pick:
+    pick: 3
     caption: 글자만 키워도 휴대폰 보기가 한결 편해집니다
-    alt: 창가에서 휴대폰을 보고 있는 여성
+    alt: 소파에 앉아 휴대폰을 보고 있는 여성
     candidates:
       - source: pexels
         id: 7329517
@@ -136,7 +136,7 @@ images:
     file: photo-02.jpg
     type: photo
     size: 1600x1067
-    pick:
+    pick: 3
     caption: 버튼이 자꾸 잘못 눌린다면 화면 크기를 키워 보세요
     alt: 휴대폰 화면을 손가락으로 누르는 모습
     candidates:
@@ -157,7 +157,7 @@ images:
     file: photo-03.jpg
     type: photo
     size: 1600x1067
-    pick:
+    pick: 2
     caption: 직접 막대를 밀어 보시게 하면 다음에는 혼자서도 바꾸실 수 있어요
     alt: 딸이 어머니에게 휴대폰 사용법을 알려 주는 모습
     candidates:
