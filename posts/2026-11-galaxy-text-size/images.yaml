@@ -107,3 +107,65 @@ images:
       화살표는 남색. 단순하고 큰 아이콘.
     alt: 글씨가 작으면 글자 크기, 버튼도 작으면 화면 크게/작게, 흐리면 굵은 글꼴을 고르라는 정리 도표
     caption: ""
+
+  # ── 실사 사진 (GPT가 아니라 무료 사진 사이트에서 가져옴) ──
+  # candidates: 후보 목록. Actions가 모두 내려받아 photos/ 에 저장한다.
+  # pick: 고른 후보 번호(1부터). 비어 있으면 완성본에 후보 전체가 보이고 1번이 임시로 들어간다.
+  - id: photo-01
+    file: photo-01.jpg
+    type: photo
+    size: 1600x1067
+    pick:
+    caption: 글자만 키워도 휴대폰 보기가 한결 편해집니다
+    alt: 창가에서 휴대폰을 보고 있는 여성
+    candidates:
+      - source: pexels
+        id: 7329517
+        page: https://www.pexels.com/photo/woman-holding-a-smartphone-7329517/
+        author: MART PRODUCTION
+      - source: pexels
+        id: 7330711
+        page: https://www.pexels.com/photo/woman-using-a-smartphone-by-the-window-7330711/
+        author: MART PRODUCTION
+      - source: pexels
+        id: 7545051
+        page: https://www.pexels.com/photo/a-elderly-woman-using-smartphone-7545051/
+        author: SHVETS production
+
+  - id: photo-02
+    file: photo-02.jpg
+    type: photo
+    size: 1600x1067
+    pick:
+    caption: 버튼이 자꾸 잘못 눌린다면 화면 크기를 키워 보세요
+    alt: 휴대폰 화면을 손가락으로 누르는 모습
+    candidates:
+      - source: pexels
+        id: 7544864
+        page: https://www.pexels.com/photo/elderly-woman-using-smartphone-7544864/
+        author: SHVETS production
+      - source: pexels
+        id: 7544787
+        page: https://www.pexels.com/photo/an-elderly-woman-using-a-smartphone-7544787/
+        author: SHVETS production
+      - source: pexels
+        id: 7545050
+        page: https://www.pexels.com/photo/an-elderly-woman-using-a-smartphone-7545050/
+        author: SHVETS production
+
+  - id: photo-03
+    file: photo-03.jpg
+    type: photo
+    size: 1600x1067
+    pick:
+    caption: 직접 막대를 밀어 보시게 하면 다음에는 혼자서도 바꾸실 수 있어요
+    alt: 딸이 어머니에게 휴대폰 사용법을 알려 주는 모습
+    candidates:
+      - source: pexels
+        id: 3791666
+        page: https://www.pexels.com/photo/daughter-explaining-elderly-mother-how-using-smartphone-3791666/
+        author: Andrea Piacquadio
+      - source: pexels
+        id: 3791664
+        page: https://www.pexels.com/photo/cheerful-senior-mother-and-adult-daughter-using-smartphone-together-3791664/
+        author: Andrea Piacquadio

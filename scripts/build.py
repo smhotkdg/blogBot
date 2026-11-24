@@ -69,6 +69,31 @@ def find_image(post_dir: Path, item: dict) -> Path | None:
     return None
 
 
+SOURCE_NAMES = {"pexels": "Pexels", "unsplash": "Unsplash", "pixabay": "Pixabay"}
+
+
+def photo_choice(post_dir: Path, item: dict) -> tuple[Path | None, dict | None, bool]:
+    """사진 칸: (파일, 고른 후보, 직접 골랐는지). images/ 에 같은 이름 파일이 있으면 그것을 우선한다."""
+    manual = find_image(post_dir, item)
+    if manual:
+        return manual, None, True
+    cands = item.get("candidates", []) or []
+    pick = item.get("pick")
+    order = [int(pick)] if pick else list(range(1, len(cands) + 1))
+    for n in order:
+        f = post_dir / "photos" / f"{item['id']}-{n}.jpg"
+        if f.exists() and 1 <= n <= len(cands):
+            return f, cands[n - 1], bool(pick)
+    return None, None, False
+
+
+def credit_text(c: dict | None) -> str:
+    if not c:
+        return ""
+    src = SOURCE_NAMES.get(c.get("source", ""), c.get("source", ""))
+    return f"사진: {c.get('author', '')} / {src}".strip()
+
+
 def data_uri(path: Path) -> str:
     mime = mimetypes.guess_type(path.name)[0] or "image/png"
     return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
@@ -76,7 +101,8 @@ def data_uri(path: Path) -> str:
 
 def placeholder_uri(num: int, item: dict) -> str:
     w, h = (int(v) for v in str(item.get("size", "1600x1200")).split("x"))
-    label = html.escape(f"그림 {num} — GPT 작업 대기 ({item['file']})")
+    who = "사진 내려받기 대기" if item.get("type") == "photo" else "GPT 작업 대기"
+    label = html.escape(f"그림 {num} — {who} ({item['file']})")
     svg = (
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">'
         f'<rect width="100%" height="100%" fill="#EEEEEE"/>'
@@ -108,13 +134,13 @@ def style_html(body_html: str) -> str:
     return body_html
 
 
-def to_plain(md_body: str, numbers: dict[str, int], items: dict[str, dict]) -> str:
+def to_plain(md_body: str, numbers: dict[str, int], caps: dict[str, str]) -> str:
     out = []
     for line in md_body.splitlines():
         m = SLOT_RE.fullmatch(line.strip())
         if m:
             sid = m.group(1)
-            cap = items.get(sid, {}).get("caption") or ""
+            cap = caps.get(sid, "")
             out.append(f"[그림 {numbers.get(sid, '?')}]" + (f" {cap}" if cap else ""))
             continue
         line = re.sub(r"^#{2,3}\s*", "", line)
@@ -146,6 +172,8 @@ def gpt_prompt(meta: dict, spec: dict, post_md: str) -> str:
         "",
     ]
     for item in spec.get("images", []):
+        if item.get("type") == "photo":
+            continue  # 실사 사진은 GPT 담당이 아님
         lines += [
             f"### {item['file']} ({item['type']}, {item.get('size', '')})",
             "",
@@ -272,10 +300,28 @@ def build(post_dir: Path) -> dict:
 
     preview, copy = styled, styled
     grid, ready = [], 0
+    photo_cards = []
+    caps: dict[str, str] = {}
+    gpt_waiting = 0
     for sid in order:
         n = numbers[sid]
         item = items.get(sid, {"file": f"{sid}.png", "caption": "", "alt": ""})
-        path = find_image(post_dir, item)
+        credit = ""
+        if item.get("type") == "photo":
+            path, cand, picked = photo_choice(post_dir, item)
+            credit = credit_text(cand)
+            if not picked:
+                thumbs = []
+                for k, c in enumerate(item.get("candidates", []) or [], 1):
+                    f = post_dir / "photos" / f"{sid}-{k}.jpg"
+                    src = data_uri(f) if f.exists() else placeholder_uri(n, item)
+                    thumbs.append(f'<div><img src="{src}" alt=""><br>후보 {k} · '
+                                  f'<a href="{html.escape(c.get("page", ""))}">{html.escape(str(c.get("author", "")))}</a></div>')
+                photo_cards.append(f'<p class="hint">그림 {n} ({sid}) — 마음에 드는 후보 번호를 images.yaml의 '
+                                   f'<b>pick</b>에 적어 주세요. 지금은 {"1번이 임시로" if path else "아무것도 안"} 들어가 있습니다.</p>'
+                                   f'<div class="grid">{"".join(thumbs)}</div>')
+        else:
+            path = find_image(post_dir, item)
         if path:
             ready += 1
             uri, fname = data_uri(path), f"{n:02d}_{path.name}"
@@ -283,14 +329,18 @@ def build(post_dir: Path) -> dict:
             uri, fname = placeholder_uri(n, item), None
         cap = item.get("caption") or ""
         alt = item.get("alt") or ""
+        cap_full = f"{cap} ({credit})" if cap and credit else (cap or credit)
+        caps[sid] = cap_full
+        if not path and item.get("type") != "photo":
+            gpt_waiting += 1
         dl = f'<a href="{uri}" download="{fname}">그림 {n} 내려받기</a>' if fname else ""
         fig = (
             f'<div class="figure"><img src="{uri}" alt="{html.escape(alt)}">'
-            f'<div class="meta">[그림 {n}] {html.escape(cap)}<br>대체 텍스트: {html.escape(alt)}</div>{dl}</div>'
+            f'<div class="meta">[그림 {n}] {html.escape(cap_full)}<br>대체 텍스트: {html.escape(alt)}</div>{dl}</div>'
         )
         slot = f'<p style="{STYLE["slot"]}">[그림 {n}] 이 자리에 그림을 넣으세요</p>'
-        if cap:
-            slot += f'<p style="{STYLE["caption"]}">{html.escape(cap)}</p>'
+        if cap_full:
+            slot += f'<p style="{STYLE["caption"]}">{html.escape(cap_full)}</p>'
         pattern = re.compile(rf'<p style="[^"]*">\s*\{{\{{img:{re.escape(sid)}\}}\}}\s*</p>')
         preview = pattern.sub(lambda _m, f=fig: f, preview, count=1)
         copy = pattern.sub(lambda _m, s=slot: s, copy, count=1)
@@ -300,7 +350,7 @@ def build(post_dir: Path) -> dict:
             + "</div>"
         )
 
-    plain = to_plain(body, numbers, items)
+    plain = to_plain(body, numbers, caps)
     tags = meta.get("tags", [])
     tags_text = " ".join(f"#{t}" for t in tags)
     checked = bool(meta.get("checked"))
@@ -315,9 +365,12 @@ def build(post_dir: Path) -> dict:
             "post.md의 <b>checked</b>를 true로 바꿔 주세요.</p>"
             f'<ul class="check">{li}</ul></div>'
         )
-    if ready < len(order):
+    if photo_cards:
+        notes.append('<div class="card warnbox"><h2 class="label">실사 사진 고르기</h2>'
+                     + "".join(photo_cards) + "</div>")
+    if gpt_waiting:
         notes.append(
-            f'<div class="card warnbox"><h2 class="label">그림 {len(order) - ready}장 대기 중</h2>'
+            f'<div class="card warnbox"><h2 class="label">GPT 그림 {gpt_waiting}장 대기 중</h2>'
             f'<p class="hint">GPT에게 <b>dist/{slug}/gpt_prompt.md</b> 내용을 붙여 넣거나, '
             f"레포의 AGENTS.md를 따르게 하세요. 그림은 posts/{slug}/images/ 에 올리면 됩니다.</p></div>"
         )
@@ -326,7 +379,7 @@ def build(post_dir: Path) -> dict:
             '<div class="card warnbox"><h2 class="label">요청서에 없는 그림 자리</h2>'
             f'<p class="hint">{", ".join(missing_spec)}</p></div>'
         )
-    if checked and ready == len(order) and not missing_spec:
+    if checked and ready == len(order) and not missing_spec and not photo_cards:
         notes.append('<div class="card okbox"><h2 class="label">발행 준비 완료</h2>'
                      '<p class="hint">확인과 그림이 모두 끝났습니다.</p></div>')
 

@@ -7,7 +7,8 @@
 | 단계 | 담당 | 하는 일 | 결과물 |
 |---|---|---|---|
 | 1. 원고 | Claude | 주제 조사, 메뉴 경로 확인, 원고와 그림 요청서 작성 | `posts/<글>/post.md`, `images.yaml` |
-| 2. 그림 | GPT | `images.yaml`을 읽고 그림 생성 | `posts/<글>/images/01.png` … |
+| 2. 그림 | GPT | `images.yaml`에서 `photo`가 아닌 항목만 그림 생성 | `posts/<글>/images/01.png` … |
+| 2-1. 실사 사진 | Claude + Actions | 무료 사진 사이트(Pexels 등)에서 후보 선정 → Actions가 내려받음 → 보고 고름(`pick`) | `posts/<글>/photos/photo-01-1.jpg` … |
 | 3. 확인 | 사람 | 내 폰으로 메뉴 이름이 맞는지 확인, 체크리스트 체크 | `post.md` 상단 `checked: true` |
 | 4. 완성본 | 빌드 스크립트 | 원고 + 그림을 합쳐 복사용 페이지 생성 | `dist/<글>/index.html` |
 
@@ -18,7 +19,8 @@ posts/
   2026-11-galaxy-text-size/
     post.md          ← 원고 (Claude)
     images.yaml      ← 그림 요청서 (Claude)
-    images/          ← 그림 (GPT)
+    images/          ← 그림 (GPT), 직접 찍은 캡처
+    photos/          ← 실사 사진 후보 (Actions가 내려받음)
 dist/
   2026-11-galaxy-text-size/
     index.html       ← 복사용 완성본 (빌드 결과)
@@ -28,6 +30,7 @@ docs/
   writing-guide.md   ← 원고 작성 규칙
   image-guide.md     ← 그림 공통 스타일
 scripts/build.py     ← 완성본 빌드
+scripts/fetch_photos.py ← 실사 사진 후보 내려받기 (Actions에서 실행)
 AGENTS.md            ← GPT(그림 담당) 작업 규칙
 STATUS.md            ← 글별 진행 현황
 ```
@@ -54,5 +57,13 @@ python scripts/build.py 2026-11-galaxy-text-size   # 특정 글
 1. `dist/<글>/gpt_prompt.md` 내용을 ChatGPT에 붙여 넣습니다. (레포 접근이 되는 GPT라면 `AGENTS.md`를 읽으라고만 해도 됩니다.)
 2. 받은 그림을 `posts/<글>/images/` 에 요청서의 파일 이름(`01.png` 등) 그대로 올립니다.
 3. 빌드를 다시 돌리면 완성본에 그림이 들어갑니다. (GitHub에 올리면 Actions가 자동으로 빌드합니다.)
+
+## 실사 사진
+
+- `images.yaml`에서 `type: photo` 항목이 실사 사진 칸입니다. GPT는 건드리지 않습니다.
+- `candidates`에 적힌 후보를 GitHub Actions가 `posts/<글>/photos/`에 내려받습니다. (작업 환경에서는 사진 사이트에 접속이 안 돼서 Actions가 받습니다.)
+- 마음에 드는 후보 번호를 `pick`에 적으면 완성본에 들어갑니다. 비어 있으면 1번이 임시로 들어가고, 완성본 맨 위에 후보 사진이 모두 보입니다.
+- 출처는 사진 설명 뒤에 `(사진: 작가 / Pexels)`로 자동으로 붙습니다.
+- 다른 사진을 쓰고 싶으면 `images/photo-01.jpg`처럼 같은 이름으로 올리면 그 파일이 우선합니다.
 
 실제 폰 화면을 캡처해서 쓰고 싶은 그림은 같은 파일 이름으로 덮어쓰면 됩니다. 화면 안내 그림은 캡처가 가장 정확합니다.
