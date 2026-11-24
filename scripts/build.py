@@ -31,12 +31,12 @@ IMAGE_GUIDE = ROOT / "docs" / "image-guide.md"
 SLOT_RE = re.compile(r"\{\{img:([0-9A-Za-z_-]+)\}\}")
 IMG_EXTS = (".png", ".jpg", ".jpeg", ".webp")
 
-# 붙여 넣기(네이버·티스토리 에디터)에서도 유지되도록 인라인 스타일을 쓴다.
+# 블로그 에디터(네이버·티스토리)에 붙여 넣어도 모양이 깨지지 않도록
+# 배경색·테두리·상자 없이 글자 크기·굵기·색만 인라인으로 쓴다.
 ACCENT = "#F26B1D"
 NAVY = "#1F2A44"
 STYLE = {
-    "h2": f"font-size:24px;font-weight:700;color:{NAVY};margin:36px 0 14px;"
-          f"padding-left:12px;border-left:6px solid {ACCENT};line-height:1.5;",
+    "h2": f"font-size:24px;font-weight:700;color:{NAVY};margin:36px 0 14px;line-height:1.5;",
     "h3": f"font-size:21px;font-weight:700;color:{NAVY};margin:28px 0 10px;line-height:1.5;",
     "p": "font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;",
     "li": "font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;",
@@ -44,10 +44,8 @@ STYLE = {
     "ul": "margin:0 0 18px;padding-left:28px;",
     "strong": f"font-weight:700;color:{ACCENT};",
     "hr": "border:none;border-top:1px solid #ddd;margin:32px 0;",
-    "tip": "background:#FFF4EC;border-radius:10px;padding:16px 18px;margin:20px 0;",
-    "warn": "background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;",
-    "slot": "font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;"
-            "background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;",
+    "img": "max-width:100%;height:auto;",
+    "imgp": "text-align:center;margin:24px 0 8px;",
     "caption": "font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;",
 }
 
@@ -138,21 +136,11 @@ def placeholder_uri(num: int, item: dict) -> str:
 
 def style_html(body_html: str) -> str:
     """markdown 결과에 인라인 스타일을 입힌다."""
-    def bq(m: re.Match) -> str:
-        inner = m.group(1)
-        kind = "warn" if "⚠️" in inner else "tip"
-        return f'<div style="{STYLE[kind]}">{inner}</div>'
-
-    body_html = re.sub(r"<blockquote>\s*(.*?)\s*</blockquote>", bq, body_html, flags=re.S)
+    # 팁·주의 상자는 에디터에서 배경이 깨지므로 상자 없이 문단으로 풀어 쓴다.
+    body_html = re.sub(r"<blockquote>\s*(.*?)\s*</blockquote>", r"\1", body_html, flags=re.S)
     for tag in ("h2", "h3", "p", "li", "ol", "ul", "strong"):
         body_html = re.sub(rf"<{tag}((?: [^>]*)?)>", rf'<{tag}\1 style="{STYLE[tag]}">', body_html)
     body_html = body_html.replace("<hr />", f'<hr style="{STYLE["hr"]}" />')
-    # 상자 안 문단은 아래 여백 제거
-    body_html = re.sub(
-        r'(<div style="[^"]*">)\s*<p style="([^"]*)">',
-        lambda m: f'{m.group(1)}<p style="{m.group(2)}margin:0;">',
-        body_html,
-    )
     return body_html
 
 
@@ -281,7 +269,7 @@ PAGE = """<!DOCTYPE html>
 <body>
 <div class="bar">
   <button onclick="copyText('title')">제목 복사</button>
-  <button onclick="copyRich()">본문 서식 복사</button>
+  <button onclick="copyRich()">본문 복사 (그림 포함)</button>
   <button class="sub" onclick="copyText('plain')">본문 텍스트만 복사</button>
   <button class="sub" onclick="copyText('tags')">태그 복사</button>
   <button class="sub" onclick="copyText('gpt')">GPT 요청 문구 복사</button>
@@ -305,7 +293,7 @@ PAGE = """<!DOCTYPE html>
     <div class="grid">{grid}</div>
   </div>
   <div class="card">
-    <h2 class="label">본문 미리보기 — 「본문 서식 복사」는 그림 자리를 [그림 N] 표시로 바꿔 복사합니다</h2>
+    <h2 class="label">본문 미리보기 — 「본문 복사 (그림 포함)」로 복사하면 이 모양 그대로 붙습니다. 그림이 안 붙는 에디터라면 아래 '그림 내려받기'로 넣으세요</h2>
     <div id="preview">{preview_html}</div>
   </div>
 </div>
@@ -331,16 +319,23 @@ async function copyText(key) {{
   ta.select(); let ok = false; try {{ ok = document.execCommand('copy'); }} catch (e) {{}}
   ta.remove(); toast(ok ? '복사했습니다' : '복사에 실패했습니다. 직접 선택해 복사해 주세요');
 }}
-async function copyRich() {{
-  const node = document.getElementById('copy-src');
-  try {{
-    await navigator.clipboard.write([new ClipboardItem({{
-      'text/html': new Blob([node.innerHTML], {{type: 'text/html'}}),
-      'text/plain': new Blob([DATA.plain], {{type: 'text/plain'}})
-    }})]);
-    toast('본문을 서식과 함께 복사했습니다'); return;
-  }} catch (e) {{}}
-  toast(fallbackCopy(node) ? '본문을 서식과 함께 복사했습니다' : '복사에 실패했습니다');
+function copyRich() {{
+  // 복사 이벤트에 HTML을 직접 넣는다: 페이지 배경색 같은 화면 스타일이 섞이지 않는다.
+  const html = document.getElementById('copy-src').innerHTML;
+  let done = false;
+  const onCopy = (e) => {{
+    e.clipboardData.setData('text/html', html);
+    e.clipboardData.setData('text/plain', DATA.plain);
+    e.preventDefault(); done = true;
+  }};
+  document.addEventListener('copy', onCopy);
+  try {{ document.execCommand('copy'); }} catch (e) {{}}
+  document.removeEventListener('copy', onCopy);
+  if (done) {{ toast('본문을 그림과 함께 복사했습니다'); return; }}
+  navigator.clipboard.write([new ClipboardItem({{
+    'text/html': new Blob([html], {{type: 'text/html'}}),
+    'text/plain': new Blob([DATA.plain], {{type: 'text/plain'}})
+  }})]).then(() => toast('본문을 그림과 함께 복사했습니다'), () => toast('복사에 실패했습니다'));
 }}
 </script>
 </body>
@@ -365,6 +360,12 @@ def build(post_dir: Path) -> dict:
 
     preview, copy = styled, styled
     grid, ready = [], 0
+    out = DIST / slug
+    img_out = out / "img"
+    if img_out.exists():
+        for f in img_out.iterdir():
+            f.unlink()
+    img_out.mkdir(parents=True, exist_ok=True)
     photo_cards = []
     caps: dict[str, str] = {}
     capture_items = []
@@ -390,13 +391,19 @@ def build(post_dir: Path) -> dict:
             path = find_image(post_dir, item)
             if item.get("type") == "photo-ai":
                 credit = "AI 생성 이미지"
+        public = None
         if path:
             ready += 1
             if item.get("crop"):
                 uri = cropped_uri(path, str(item["crop"]), float(item.get("crop_y", 0.5)))
                 fname = f"{n:02d}_{Path(item['file']).stem}.jpg"
+                (img_out / f"{n:02d}.jpg").write_bytes(base64.b64decode(uri.split(",", 1)[1]))
+                public = f"{REPO_RAW}/dist/{slug}/img/{n:02d}.jpg"
             else:
                 uri, fname = data_uri(path), f"{n:02d}_{path.name}"
+                ext = path.suffix.lower()
+                (img_out / f"{n:02d}{ext}").write_bytes(path.read_bytes())
+                public = f"{REPO_RAW}/dist/{slug}/img/{n:02d}{ext}"
         else:
             uri, fname = placeholder_uri(n, item), None
         cap = item.get("caption") or ""
@@ -415,7 +422,11 @@ def build(post_dir: Path) -> dict:
             f'<div class="figure"><img src="{uri}" alt="{html.escape(alt)}">'
             f'<div class="meta">[그림 {n}] {html.escape(cap_full)}<br>대체 텍스트: {html.escape(alt)}</div>{dl}</div>'
         )
-        slot = f'<p style="{STYLE["slot"]}">[그림 {n}] 이 자리에 그림을 넣으세요</p>'
+        if public:
+            slot = (f'<p style="{STYLE["imgp"]}"><img src="{public}" alt="{html.escape(alt)}" '
+                    f'style="{STYLE["img"]}"></p>')
+        else:
+            slot = f'<p style="{STYLE["p"]}text-align:center;"><b>[그림 {n} — 준비 중]</b></p>'
         if cap_full:
             slot += f'<p style="{STYLE["caption"]}">{html.escape(cap_full)}</p>'
         pattern = re.compile(rf'<p style="[^"]*">\s*\{{\{{img:{re.escape(sid)}\}}\}}\s*</p>')
@@ -465,8 +476,6 @@ def build(post_dir: Path) -> dict:
         notes.append('<div class="card okbox"><h2 class="label">발행 준비 완료</h2>'
                      '<p class="hint">확인과 그림이 모두 끝났습니다.</p></div>')
 
-    out = DIST / slug
-    out.mkdir(parents=True, exist_ok=True)
     title = str(meta.get("title", slug))
     done_files = {i["file"] for i in spec.get("images", []) if find_image(post_dir, i)}
     gpt_req = gpt_request(slug, meta, spec, done_files)
