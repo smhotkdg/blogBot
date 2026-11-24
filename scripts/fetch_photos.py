@@ -31,12 +31,18 @@ def candidate_url(c: dict) -> str:
     raise ValueError(f"내려받을 주소를 알 수 없음: {c}")
 
 
+def candidate_filename(item: dict, c: dict) -> str:
+    """후보 사진 파일 이름. 후보 목록 순서가 바뀌어도 섞이지 않도록 사진 id로 짓는다."""
+    cid = str(c.get("id", "")).replace("/", "_")
+    return f"{item['id']}--{c.get('source', 'web')}-{cid}.jpg"
+
+
 def fetch(url: str, dest: Path) -> None:
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=60) as r:
         data = r.read()
-    if len(data) < 5000:
-        raise ValueError(f"파일이 너무 작음 ({len(data)} bytes)")
+    if len(data) < 5000 or not (data[:3] == b"\xff\xd8\xff" or data[:8] == b"\x89PNG\r\n\x1a\n"):
+        raise ValueError(f"사진 파일이 아님 ({len(data)} bytes) — Unsplash+ 등 유료 사진일 수 있음")
     dest.write_bytes(data)
 
 
@@ -53,8 +59,8 @@ def main(argv: list[str]) -> int:
                 continue
             out_dir = post_dir / "photos"
             out_dir.mkdir(exist_ok=True)
-            for n, c in enumerate(item.get("candidates", []), 1):
-                dest = out_dir / f"{item['id']}-{n}.jpg"
+            for c in item.get("candidates", []):
+                dest = out_dir / candidate_filename(item, c)
                 if dest.exists():
                     continue
                 try:

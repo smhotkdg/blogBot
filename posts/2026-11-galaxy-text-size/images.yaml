@@ -108,64 +108,52 @@ images:
     alt: 글씨가 작으면 글자 크기, 버튼도 작으면 화면 크게/작게, 흐리면 굵은 글꼴을 고르라는 정리 도표
     caption: ""
 
-  # ── 실사 사진 (GPT가 아니라 무료 사진 사이트에서 가져옴) ──
-  # candidates: 후보 목록. Actions가 모두 내려받아 photos/ 에 저장한다.
-  # pick: 고른 후보 번호(1부터). 비어 있으면 완성본에 후보 전체가 보이고 1번이 임시로 들어간다.
+  # ── 실사풍(GPT) + 실사(Unsplash) ──
   - id: photo-01
-    file: photo-01.jpg
-    type: photo
+    file: photo-01.png
+    type: photo-ai
     size: 1600x1067
-    pick: 3
+    text: []
+    prompt: >
+      사진처럼 보이는 실사풍 이미지. 어깨 너머 시점. 50대 후반 한국 여성이 한국 아파트 거실 소파에 앉아
+      두 손으로 휴대폰을 들고 있다. 휴대폰 화면에는 큼직한 글씨의 문자 메시지 화면이 보이지만 글자는 흐리게 처리.
+      얼굴은 화면 밖이거나 뒷머리만 보이게. 따뜻한 오후 햇살, 자연스러운 색감. 휴대폰 로고 없음.
+    alt: 소파에 앉아 큰 글씨로 바뀐 휴대폰 화면을 보는 모습
     caption: 글자만 키워도 휴대폰 보기가 한결 편해집니다
-    alt: 소파에 앉아 휴대폰을 보고 있는 여성
-    candidates:
-      - source: pexels
-        id: 7329517
-        page: https://www.pexels.com/photo/woman-holding-a-smartphone-7329517/
-        author: MART PRODUCTION
-      - source: pexels
-        id: 7330711
-        page: https://www.pexels.com/photo/woman-using-a-smartphone-by-the-window-7330711/
-        author: MART PRODUCTION
-      - source: pexels
-        id: 7545051
-        page: https://www.pexels.com/photo/a-elderly-woman-using-smartphone-7545051/
-        author: SHVETS production
 
   - id: photo-02
     file: photo-02.jpg
     type: photo
     size: 1600x1067
-    pick: 3
+    pick:
     caption: 버튼이 자꾸 잘못 눌린다면 화면 크기를 키워 보세요
-    alt: 휴대폰 화면을 손가락으로 누르는 모습
+    alt: 손가락으로 휴대폰 화면을 누르는 모습
     candidates:
-      - source: pexels
-        id: 7544864
-        page: https://www.pexels.com/photo/elderly-woman-using-smartphone-7544864/
-        author: SHVETS production
-      - source: pexels
-        id: 7544787
-        page: https://www.pexels.com/photo/an-elderly-woman-using-a-smartphone-7544787/
-        author: SHVETS production
-      - source: pexels
-        id: 7545050
-        page: https://www.pexels.com/photo/an-elderly-woman-using-a-smartphone-7545050/
-        author: SHVETS production
+      - source: unsplash
+        id: "6Md8RJCL7x4"
+        page: https://unsplash.com/photos/a-person-sitting-at-a-table-with-a-cell-phone-6Md8RJCL7x4
+      - source: unsplash
+        id: "egQsaCPGh4g"
+        page: https://unsplash.com/photos/person-holding-black-samsung-android-smartphone-egQsaCPGh4g
+      - source: unsplash
+        id: "QQ2d5naZee0"
+        page: https://unsplash.com/photos/person-holding-black-android-smartphone-QQ2d5naZee0
+      - source: unsplash
+        id: "ac29xaXZYAM"
+        page: https://unsplash.com/photos/a-close-up-of-a-person-holding-a-cell-phone-ac29xaXZYAM
+      - source: unsplash
+        id: "-kZuiNDU5IY"
+        page: https://unsplash.com/photos/a-close-up-of-a-person-holding-a-cell-phone--kZuiNDU5IY
+        author: Yazid N
 
   - id: photo-03
-    file: photo-03.jpg
-    type: photo
+    file: photo-03.png
+    type: photo-ai
     size: 1600x1067
-    pick: 2
+    text: []
+    prompt: >
+      사진처럼 보이는 실사풍 이미지. 한국 아파트 거실 소파. 60대 초반 부모의 손이 휴대폰을 들고 있고,
+      옆에 앉은 30대 자녀의 손이 화면 아래쪽을 가리키며 설명하는 장면. 손과 휴대폰 중심의 클로즈업,
+      얼굴은 보이지 않게. 화면 속 글자는 흐리게. 따뜻하고 차분한 분위기. 휴대폰 로고 없음.
+    alt: 자녀가 옆에서 부모님 휴대폰 화면을 가리키며 설명하는 모습
     caption: 직접 막대를 밀어 보시게 하면 다음에는 혼자서도 바꾸실 수 있어요
-    alt: 딸이 어머니에게 휴대폰 사용법을 알려 주는 모습
-    candidates:
-      - source: pexels
-        id: 3791666
-        page: https://www.pexels.com/photo/daughter-explaining-elderly-mother-how-using-smartphone-3791666/
-        author: Andrea Piacquadio
-      - source: pexels
-        id: 3791664
-        page: https://www.pexels.com/photo/cheerful-senior-mother-and-adult-daughter-using-smartphone-together-3791664/
-        author: Andrea Piacquadio

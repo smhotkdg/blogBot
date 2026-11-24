@@ -20,6 +20,9 @@ from pathlib import Path
 import markdown
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from fetch_photos import candidate_filename  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 POSTS = ROOT / "posts"
 DIST = ROOT / "dist"
@@ -81,8 +84,10 @@ def photo_choice(post_dir: Path, item: dict) -> tuple[Path | None, dict | None, 
     pick = item.get("pick")
     order = [int(pick)] if pick else list(range(1, len(cands) + 1))
     for n in order:
-        f = post_dir / "photos" / f"{item['id']}-{n}.jpg"
-        if f.exists() and 1 <= n <= len(cands):
+        if not 1 <= n <= len(cands):
+            continue
+        f = post_dir / "photos" / candidate_filename(item, cands[n - 1])
+        if f.exists():
             return f, cands[n - 1], bool(pick)
     return None, None, False
 
@@ -91,7 +96,8 @@ def credit_text(c: dict | None) -> str:
     if not c:
         return ""
     src = SOURCE_NAMES.get(c.get("source", ""), c.get("source", ""))
-    return f"사진: {c.get('author', '')} / {src}".strip()
+    author = str(c.get("author") or "").strip()
+    return f"사진: {author} / {src}" if author else f"사진: {src}"
 
 
 def data_uri(path: Path) -> str:
@@ -314,7 +320,7 @@ def build(post_dir: Path) -> dict:
             if not picked:
                 thumbs = []
                 for k, c in enumerate(item.get("candidates", []) or [], 1):
-                    f = post_dir / "photos" / f"{sid}-{k}.jpg"
+                    f = post_dir / "photos" / candidate_filename(item, c)
                     src = data_uri(f) if f.exists() else placeholder_uri(n, item)
                     thumbs.append(f'<div><img src="{src}" alt=""><br>후보 {k} · '
                                   f'<a href="{html.escape(c.get("page", ""))}">{html.escape(str(c.get("author", "")))}</a></div>')
@@ -323,6 +329,8 @@ def build(post_dir: Path) -> dict:
                                    f'<div class="grid">{"".join(thumbs)}</div>')
         else:
             path = find_image(post_dir, item)
+            if item.get("type") == "photo-ai":
+                credit = "AI 생성 이미지"
         if path:
             ready += 1
             uri, fname = data_uri(path), f"{n:02d}_{path.name}"

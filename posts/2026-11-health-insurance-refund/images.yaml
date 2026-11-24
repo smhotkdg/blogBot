@@ -113,37 +113,38 @@ images:
     alt: 환급금을 받을 계좌를 입력하고 신청하는 화면
     caption: 계좌는 반드시 본인 명의로 입력하세요
 
-  # ── 실사 사진 (Pexels) ──
+  # ── 실사(Unsplash) + 실사풍(GPT) ──
   - id: photo-01
     file: photo-01.jpg
     type: photo
     size: 1600x1067
-    pick: 2
+    pick:
     caption: 휴대폰 하나면 공단에 가지 않아도 됩니다
-    alt: 휴대폰 화면을 누르며 미소 짓는 여성
+    alt: 손에 든 안드로이드 휴대폰
     candidates:
-      - source: pexels
-        id: 1751147
-        page: https://www.pexels.com/photo/1751147/
-        author: Pexels
-      - source: pexels
-        id: 7331674
-        page: https://www.pexels.com/photo/an-elderly-woman-using-a-smartphone-7331674/
-        author: Wayne Fotografias
-      - source: pexels
-        id: 8834082
-        page: https://www.pexels.com/photo/elderly-woman-holding-phone-looking-at-the-camera-8834082/
-        author: Kampus Production
+      - source: unsplash
+        id: "-16na5rDDRk"
+        page: https://unsplash.com/photos/person-holding-black-samsung-android-smartphone--16na5rDDRk
+      - source: unsplash
+        id: "MsXrapwmfwE"
+        page: https://unsplash.com/photos/person-showing-black-samsung-galaxy-android-smartphone-MsXrapwmfwE
+        author: Ernesto Leon
+      - source: unsplash
+        id: "fbT_sJEpYOo"
+        page: https://unsplash.com/photos/a-close-up-of-a-cell-phone-near-a-sign-fbT_sJEpYOo
+      - source: unsplash
+        id: "qIHd1KMBU4w"
+        page: https://unsplash.com/photos/qIHd1KMBU4w
+        author: Macro.jr
 
   - id: photo-02
-    file: photo-02.jpg
-    type: photo
+    file: photo-02.png
+    type: photo-ai
     size: 1600x1067
-    pick: 1
+    text: []
+    prompt: >
+      사진처럼 보이는 실사풍 이미지. 한국 가정의 나무 식탁 위. 60대 초반 부모의 손이 휴대폰을 쥐고 있고,
+      30대 자녀의 손가락이 화면을 가리킨다. 식탁 위에 글자가 보이지 않는 흰 우편 봉투 한 장과 안경, 머그잔.
+      손과 휴대폰 중심, 얼굴은 보이지 않게. 화면 속 글자는 흐리게. 기관 로고·글자 넣지 말 것.
+    alt: 식탁에서 자녀가 부모님 휴대폰 화면을 가리키며 돕는 모습
     caption: 인증 버튼은 부모님이 직접 누르시게 도와드리세요
-    alt: 딸이 어머니에게 휴대폰 사용법을 알려 주는 모습
-    candidates:
-      - source: pexels
-        id: 3791666
-        page: https://www.pexels.com/photo/daughter-explaining-elderly-mother-how-using-smartphone-3791666/
-        author: Andrea Piacquadio
