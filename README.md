@@ -54,9 +54,12 @@ python scripts/build.py 2026-11-galaxy-text-size   # 특정 글
 
 ## GPT에게 그림 맡기기
 
-1. `dist/<글>/gpt_prompt.md` 내용을 ChatGPT에 붙여 넣습니다. (레포 접근이 되는 GPT라면 `AGENTS.md`를 읽으라고만 해도 됩니다.)
-2. 받은 그림을 `posts/<글>/images/` 에 요청서의 파일 이름(`01.png` 등) 그대로 올립니다.
-3. 빌드를 다시 돌리면 완성본에 그림이 들어갑니다. (GitHub에 올리면 Actions가 자동으로 빌드합니다.)
+1. 완성본 페이지의 **GPT 요청 문구 복사** 버튼을 누르거나 `dist/<글>/gpt_request.txt` 내용을 복사해 ChatGPT에 붙여 넣습니다.
+   - 요청 문구 안에 상세 요청서(`gpt_prompt.md`) 공개 주소가 들어 있어 GPT가 직접 읽습니다.
+   - 이미 올라온 그림은 목록에서 자동으로 빠집니다.
+2. GPT가 한 장씩 만들면 받은 그림을 요청서의 파일 이름(`01.png` 등)으로 저장합니다. 그림 속 글자가 틀렸으면 다시 만들어 달라고 합니다.
+3. GitHub 웹에서 `posts/<글>/images/` 폴더 → **Add file → Upload files**로 올립니다.
+4. 올리면 Actions가 자동으로 완성본을 다시 만듭니다(1분 정도).
 
 ## 실사 사진
 

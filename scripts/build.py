@@ -159,6 +159,44 @@ def to_plain(md_body: str, numbers: dict[str, int], caps: dict[str, str]) -> str
     return re.sub(r"\n{3,}", "\n\n", text).strip() + "\n"
 
 
+REPO_RAW = "https://raw.githubusercontent.com/smhotkdg/blogBot/main"
+RATIO = {"1080x1080": "정사각형 1:1", "1600x1200": "가로 4:3", "1600x1067": "가로 3:2", "1080x1920": "세로 9:16"}
+KIND = {"thumbnail": "대표 이미지", "illustration": "설명 그림", "infographic": "정리 도표",
+        "screen-guide": "화면 안내 그림", "photo-ai": "실사풍 사진"}
+
+
+def gpt_request(slug: str, meta: dict, spec: dict, done: set[str]) -> str:
+    """ChatGPT에 그대로 붙여 넣을 요청 문구. 이미 있는 그림은 목록에서 뺀다."""
+    todo = [i for i in spec.get("images", [])
+            if i.get("type") not in ("photo", "capture") and i["file"] not in done]
+    if not todo:
+        return "이 글의 GPT 그림은 모두 준비되었습니다."
+    lines = [
+        f"블로그 글 「{meta.get('title', '')}」에 들어갈 그림을 만들어 줘.",
+        "",
+        f"요청서(공통 스타일 + 그림별 설명): {REPO_RAW}/dist/{slug}/gpt_prompt.md",
+        "",
+        "규칙",
+        "- 요청서의 '공통' 스타일을 모든 그림에 적용해.",
+        "- 한 번에 한 장씩, 아래 순서대로 만들어. 한 장을 만들면 파일 이름을 알려 주고, 내가 \"다음\"이라고 하면 다음 그림을 만들어.",
+        "- 그림 안 글자는 요청서의 '넣을 글자'만, 철자 그대로 넣어. 다른 글자는 넣지 마.",
+        "- 비율은 아래 적힌 대로 맞춰.",
+        "- 실사풍 사진은 진짜 사진처럼 보이게, 얼굴은 보이지 않게, 휴대폰에 로고 없이.",
+        "- 실제 회사·기관 로고, 실존 인물, 실제 앱 화면은 그리지 마.",
+        "- 링크가 열리지 않으면 바로 말해 줘. 요청서 내용을 붙여 넣을게.",
+        "",
+        f"만들 그림 ({len(todo)}장)",
+    ]
+    for n, i in enumerate(todo, 1):
+        ratio = RATIO.get(str(i.get("size", "")), str(i.get("size", "")))
+        txt = " / ".join(f'"{t}"' for t in i.get("text", []) or [])
+        lines.append(f"{n}. {i['file']} — {KIND.get(i['type'], i['type'])}, {ratio}"
+                     + (f", 넣을 글자: {txt}" if txt else ", 글자 없음"))
+        lines.append(f"   {str(i.get('alt', '')).strip()}")
+    lines += ["", "첫 번째 그림부터 시작해 줘."]
+    return "\n".join(lines)
+
+
 def gpt_prompt(meta: dict, spec: dict, post_md: str) -> str:
     guide = IMAGE_GUIDE.read_text(encoding="utf-8")
     lines = [
@@ -230,9 +268,14 @@ PAGE = """<!DOCTYPE html>
   <button onclick="copyRich()">본문 서식 복사</button>
   <button class="sub" onclick="copyText('plain')">본문 텍스트만 복사</button>
   <button class="sub" onclick="copyText('tags')">태그 복사</button>
+  <button class="sub" onclick="copyText('gpt')">GPT 요청 문구 복사</button>
 </div>
 <div class="wrap">
   {status_card}
+  <div class="card">
+    <h2 class="label">GPT 요청 문구 — 「GPT 요청 문구 복사」를 눌러 ChatGPT에 붙여 넣으세요</h2>
+    <pre style="white-space:pre-wrap;font-size:14px;line-height:1.7;background:#F7F7F7;border-radius:8px;padding:14px;margin:0;">{gpt_esc}</pre>
+  </div>
   <div class="card">
     <h2 class="label">제목</h2>
     <p class="title">{title_esc}</p>
@@ -405,6 +448,8 @@ def build(post_dir: Path) -> dict:
     out = DIST / slug
     out.mkdir(parents=True, exist_ok=True)
     title = str(meta.get("title", slug))
+    done_files = {i["file"] for i in spec.get("images", []) if find_image(post_dir, i)}
+    gpt_req = gpt_request(slug, meta, spec, done_files)
     page = PAGE.format(
         title_esc=html.escape(title),
         tags_esc=html.escape(tags_text),
@@ -414,10 +459,12 @@ def build(post_dir: Path) -> dict:
         grid="".join(grid),
         preview_html=preview,
         copy_html=copy,
-        data_json=json.dumps({"title": title, "tags": tags_text, "plain": plain}, ensure_ascii=False),
+        gpt_esc=html.escape(gpt_req),
+        data_json=json.dumps({"title": title, "tags": tags_text, "plain": plain, "gpt": gpt_req}, ensure_ascii=False),
     )
     (out / "index.html").write_text(page, encoding="utf-8")
     (out / "post.txt").write_text(f"{title}\n\n{plain}\n{tags_text}\n", encoding="utf-8")
+    (out / "gpt_request.txt").write_text(gpt_req + "\n", encoding="utf-8")
     (out / "gpt_prompt.md").write_text(
         gpt_prompt(meta, spec, (post_dir / "post.md").read_text(encoding="utf-8")), encoding="utf-8"
     )
