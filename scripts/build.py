@@ -302,6 +302,7 @@ def build(post_dir: Path) -> dict:
     grid, ready = [], 0
     photo_cards = []
     caps: dict[str, str] = {}
+    capture_items = []
     gpt_waiting = 0
     for sid in order:
         n = numbers[sid]
@@ -331,6 +332,11 @@ def build(post_dir: Path) -> dict:
         alt = item.get("alt") or ""
         cap_full = f"{cap} ({credit})" if cap and credit else (cap or credit)
         caps[sid] = cap_full
+        if not path and item.get("type") == "capture":
+            mask = ", ".join(item.get("mask") or []) or "없음"
+            capture_items.append(
+                f"<li><b>그림 {n} · {html.escape(item['file'])}</b> — {html.escape(str(item.get('guide', '')).strip())}"
+                f"<br><span style=\"color:#C0392B\">가릴 것: {html.escape(mask)}</span></li>")
         if not path and item.get("type") not in ("photo", "capture"):
             gpt_waiting += 1
         dl = f'<a href="{uri}" download="{fname}">그림 {n} 내려받기</a>' if fname else ""
@@ -365,6 +371,11 @@ def build(post_dir: Path) -> dict:
             "post.md의 <b>checked</b>를 true로 바꿔 주세요.</p>"
             f'<ul class="check">{li}</ul></div>'
         )
+    if capture_items:
+        notes.append(
+            f'<div class="card warnbox"><h2 class="label">직접 캡처할 화면 {len(capture_items)}장</h2>'
+            f'<p class="hint">본인 휴대폰으로 캡처해서 개인정보를 가린 뒤 posts/{slug}/images/ 에 아래 파일 이름으로 올려 주세요.</p>'
+            f'<ul class="check">{"".join(capture_items)}</ul></div>')
     if photo_cards:
         notes.append('<div class="card warnbox"><h2 class="label">실사 사진 고르기</h2>'
                      + "".join(photo_cards) + "</div>")
@@ -379,7 +390,7 @@ def build(post_dir: Path) -> dict:
             '<div class="card warnbox"><h2 class="label">요청서에 없는 그림 자리</h2>'
             f'<p class="hint">{", ".join(missing_spec)}</p></div>'
         )
-    if checked and ready == len(order) and not missing_spec and not photo_cards:
+    if checked and ready == len(order) and not missing_spec and not photo_cards and not capture_items:
         notes.append('<div class="card okbox"><h2 class="label">발행 준비 완료</h2>'
                      '<p class="hint">확인과 그림이 모두 끝났습니다.</p></div>')
 

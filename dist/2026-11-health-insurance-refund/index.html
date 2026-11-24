@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>건강보험 환급금 조회·신청｜건강보험25시 앱으로 5분이면 끝 — 복사용 완성본</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F4F2EE; font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; color: #222; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 80px; }
+  .bar { position: sticky; top: 0; z-index: 10; background: #1F2A44; color: #fff; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+  .bar button { font-size: 15px; font-weight: 700; padding: 10px 14px; border: 0; border-radius: 8px; background: #F26B1D; color: #fff; cursor: pointer; }
+  .bar button.sub { background: #fff; color: #1F2A44; }
+  .toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: #1F2A44; color: #fff; padding: 12px 20px; border-radius: 999px; font-size: 15px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .toast.on { opacity: 1; }
+  .card { background: #fff; border-radius: 14px; padding: 22px; margin: 0 0 18px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .card h2.label { font-size: 14px; letter-spacing: .02em; color: #888; margin: 0 0 10px; font-weight: 700; }
+  .warnbox { background: #FFF4EC; border: 2px solid #F26B1D; }
+  .okbox { background: #EEF8F0; border: 2px solid #3A9B57; }
+  .title { font-size: 24px; font-weight: 800; line-height: 1.5; margin: 0; }
+  .tags { font-size: 16px; color: #555; margin: 0; word-break: keep-all; }
+  .figure { margin: 22px 0; text-align: center; }
+  .figure img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #eee; }
+  .figure .meta { font-size: 14px; color: #666; margin-top: 8px; line-height: 1.6; }
+  .figure a { display: inline-block; margin-top: 6px; font-size: 14px; font-weight: 700; color: #F26B1D; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .grid div { text-align: center; font-size: 13px; color: #555; }
+  .grid img { width: 100%; height: 120px; object-fit: contain; background: #fafafa; border-radius: 6px; border: 1px solid #eee; }
+  ul.check { margin: 6px 0 0; padding-left: 22px; line-height: 1.8; font-size: 15px; }
+  .hint { font-size: 14px; color: #666; line-height: 1.7; margin: 8px 0 0; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <button onclick="copyText('title')">제목 복사</button>
+  <button onclick="copyRich()">본문 서식 복사</button>
+  <button class="sub" onclick="copyText('plain')">본문 텍스트만 복사</button>
+  <button class="sub" onclick="copyText('tags')">태그 복사</button>
+</div>
+<div class="wrap">
+  <div class="card warnbox"><h2 class="label">발행 전 확인 필요</h2><p class="hint">기준: 건강보험25시 앱 · 2026년 11월 확인. 내 폰으로 아래 항목을 확인한 뒤 post.md의 <b>checked</b>를 true로 바꿔 주세요.</p><ul class="check"><li>플레이스토어에서 &#x27;건강보험25시&#x27; 검색 시 개발자 이름이 &#x27;국민건강보험공단&#x27;으로 나오는지</li><li>로그인 화면의 간편인증 종류(카카오·네이버·PASS 등) 실제 목록</li><li>메인 화면에 환급금 안내나 &#x27;환급금 조회/신청&#x27; 버튼이 보이는지, 검색창에 &#x27;환급금&#x27; 입력 시 바로 연결되는지</li><li>메뉴 이름이 &#x27;환급금(지원금) 조회 및 신청&#x27;인지 다른 이름인지 (본문 2-③과 캡처 설명에 반영)</li><li>신청 화면에 &#x27;앞으로 생기는 환급금도 이 계좌로 받기&#x27; 같은 사전 계좌 동의 항목이 있는지, 정확한 이름</li><li>간편(쉬운) 모드 켜는 위치</li><li>환급금이 없을 때 나오는 문구</li></ul></div>
+<div class="card warnbox"><h2 class="label">직접 캡처할 화면 5장</h2><p class="hint">본인 휴대폰으로 캡처해서 개인정보를 가린 뒤 posts/2026-11-health-insurance-refund/images/ 에 아래 파일 이름으로 올려 주세요.</p><ul class="check"><li><b>그림 4 · c01.png</b> — Play 스토어에서 &#x27;건강보험25시&#x27;를 검색한 결과 화면. 앱 이름과 개발자(국민건강보험공단), 설치 버튼이 보이게. 설치 버튼에 주황 테두리 + ①.<br><span style="color:#C0392B">가릴 것: 없음</span></li><li><b>그림 5 · c02.png</b> — 앱 첫 실행 후 로그인 방법 고르는 화면(간편인증 목록이 보이는 화면). 간편인증 버튼에 주황 테두리 + ②.<br><span style="color:#C0392B">가릴 것: 이름, 생년월일, 휴대폰 번호</span></li><li><b>그림 6 · c03.png</b> — 로그인 후 첫 화면. 검색창(또는 환급금 안내 문구)이 보이게. 검색창에 주황 테두리 + ③. 가능하면 검색창에 &#x27;환급금&#x27;을 입력해 &#x27;환급금(지원금) 조회 및 신청&#x27;이 보이는 상태로 캡처.<br><span style="color:#C0392B">가릴 것: 이름</span></li><li><b>그림 7 · c04.png</b> — 환급금 조회 결과 화면. 내역이 있으면 종류가 보이게(금액은 가리기), 없으면 &#x27;내역 없음&#x27; 화면 그대로.<br><span style="color:#C0392B">가릴 것: 이름, 금액, 주민번호 일부</span></li><li><b>그림 8 · c05.png</b> — 신청 화면에서 은행 선택·계좌번호 입력칸과 신청 버튼이 보이게. 사전 계좌 동의 항목이 있으면 함께. 실제로 신청하지 않아도 입력 전 빈 화면으로 충분함.<br><span style="color:#C0392B">가릴 것: 이름, 계좌번호, 금액</span></li></ul></div>
+<div class="card warnbox"><h2 class="label">실사 사진 고르기</h2><p class="hint">그림 3 (photo-01) — 마음에 드는 후보 번호를 images.yaml의 <b>pick</b>에 적어 주세요. 지금은 아무것도 안 들어가 있습니다.</p><div class="grid"><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwNjciIHZpZXdCb3g9IjAgMCAxNjAwIDEwNjciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjEwNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDMg4oCUIOyCrOynhCDrgrTroKTrsJvquLAg64yA6riwIChwaG90by0wMS5qcGcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>후보 1 · <a href="https://www.pexels.com/photo/1751147/">Pexels</a></div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwNjciIHZpZXdCb3g9IjAgMCAxNjAwIDEwNjciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjEwNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDMg4oCUIOyCrOynhCDrgrTroKTrsJvquLAg64yA6riwIChwaG90by0wMS5qcGcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>후보 2 · <a href="https://www.pexels.com/photo/an-elderly-woman-using-a-smartphone-7331674/">Wayne Fotografias</a></div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwNjciIHZpZXdCb3g9IjAgMCAxNjAwIDEwNjciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjEwNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDMg4oCUIOyCrOynhCDrgrTroKTrsJvquLAg64yA6riwIChwaG90by0wMS5qcGcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>후보 3 · <a href="https://www.pexels.com/photo/elderly-woman-holding-phone-looking-at-the-camera-8834082/">Kampus Production</a></div></div><p class="hint">그림 10 (photo-02) — 마음에 드는 후보 번호를 images.yaml의 <b>pick</b>에 적어 주세요. 지금은 아무것도 안 들어가 있습니다.</p><div class="grid"><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwNjciIHZpZXdCb3g9IjAgMCAxNjAwIDEwNjciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjEwNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDEwIOKAlCDsgqzsp4Qg64K066Ck67Cb6riwIOuMgOq4sCAocGhvdG8tMDIuanBnKTwvdGV4dD48L3N2Zz4=" alt=""><br>후보 1 · <a href="https://www.pexels.com/photo/daughter-explaining-elderly-mother-how-using-smartphone-3791666/">Andrea Piacquadio</a></div></div></div>
+<div class="card warnbox"><h2 class="label">GPT 그림 3장 대기 중</h2><p class="hint">GPT에게 <b>dist/2026-11-health-insurance-refund/gpt_prompt.md</b> 내용을 붙여 넣거나, 레포의 AGENTS.md를 따르게 하세요. 그림은 posts/2026-11-health-insurance-refund/images/ 에 올리면 됩니다.</p></div>
+  <div class="card">
+    <h2 class="label">제목</h2>
+    <p class="title">건강보험 환급금 조회·신청｜건강보험25시 앱으로 5분이면 끝</p>
+  </div>
+  <div class="card">
+    <h2 class="label">태그</h2>
+    <p class="tags">#건강보험환급금 #건강보험환급금조회 #건강보험25시 #본인부담상한제 #건강보험료환급 #환급금스미싱 #부모님환급금 #생활디지털</p>
+  </div>
+  <div class="card">
+    <h2 class="label">그림 10장 — 번호 순서대로 저장해서 [그림 N] 자리에 넣으세요 (0장 준비됨)</h2>
+    <div class="grid"><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjEwODAiIHZpZXdCb3g9IjAgMCAxMDgwIDEwODAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjEwNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDEg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMS5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 1<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEyMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjExNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDIg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMi5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 2<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwNjciIHZpZXdCb3g9IjAgMCAxNjAwIDEwNjciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjEwNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDMg4oCUIOyCrOynhCDrgrTroKTrsJvquLAg64yA6riwIChwaG90by0wMS5qcGcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 3<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDQg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDEucG5nKTwvdGV4dD48L3N2Zz4=" alt=""><br>그림 4<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDUg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDIucG5nKTwvdGV4dD48L3N2Zz4=" alt=""><br>그림 5<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDYg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDMucG5nKTwvdGV4dD48L3N2Zz4=" alt=""><br>그림 6<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDcg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDQucG5nKTwvdGV4dD48L3N2Zz4=" alt=""><br>그림 7<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDgg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDUucG5nKTwvdGV4dD48L3N2Zz4=" alt=""><br>그림 8<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEyMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjExNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDkg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMy5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt=""><br>그림 9<br>대기</div><div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwNjciIHZpZXdCb3g9IjAgMCAxNjAwIDEwNjciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjEwNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDEwIOKAlCDsgqzsp4Qg64K066Ck67Cb6riwIOuMgOq4sCAocGhvdG8tMDIuanBnKTwvdGV4dD48L3N2Zz4=" alt=""><br>그림 10<br>대기</div></div>
+  </div>
+  <div class="card">
+    <h2 class="label">본문 미리보기 — 「본문 서식 복사」는 그림 자리를 [그림 N] 표시로 바꿔 복사합니다</h2>
+    <div id="preview"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">병원비를 많이 낸 해가 있었거나, 직장을 옮기거나 그만둔 적이 있다면 <strong style="font-weight:700;color:#F26B1D;">돌려받을 건강보험 돈</strong>이 있을 수 있습니다. 그런데 직접 신청하지 않으면 들어오지 않는 경우가 많고, <strong style="font-weight:700;color:#F26B1D;">3년이 지나면 받을 수 없게 됩니다.</strong> 이 글을 따라 하면 휴대폰으로 5분 안에 확인하고 신청까지 끝낼 수 있습니다.</p>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjEwODAiIHZpZXdCb3g9IjAgMCAxMDgwIDEwODAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjEwNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDEg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMS5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="건강보험 환급금을 휴대폰으로 확인하는 방법 대표 이미지"><div class="meta">[그림 1] <br>대체 텍스트: 건강보험 환급금을 휴대폰으로 확인하는 방법 대표 이미지</div></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">먼저 결론부터</h2>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">어디서?</strong> 국민건강보험공단 앱 <strong style="font-weight:700;color:#F26B1D;">건강보험25시</strong>에서 조회하고 신청합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">무엇이 필요?</strong> 본인 휴대폰, 간편인증(카카오·네이버 등), <strong style="font-weight:700;color:#F26B1D;">본인 명의 통장 계좌번호</strong>.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">언제까지?</strong> 환급금이 생긴 날부터 <strong style="font-weight:700;color:#F26B1D;">3년 안에</strong> 신청해야 합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">조심할 것</strong> 공단은 환급금 안내 문자에 <strong style="font-weight:700;color:#F26B1D;">인터넷 주소(링크)를 넣지 않습니다.</strong> 링크가 있는 문자는 누르지 마세요.</li>
+</ul>
+<div style="background:#FFF4EC;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">💡 팁: 예전에 쓰던 <strong style="font-weight:700;color:#F26B1D;">The건강보험</strong> 앱이 2026년 3월에 <strong style="font-weight:700;color:#F26B1D;">건강보험25시</strong>로 바뀌었습니다. 이미 깔려 있다면 업데이트만 하면 됩니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">돌려받는 돈은 두 가지예요</h2>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEyMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjExNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDIg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMi5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="건강보험에서 돌려받는 돈은 더 낸 보험료와 상한액을 넘은 병원비 두 가지라는 도표"><div class="meta">[그림 2] 내 경우가 어디에 해당하는지 먼저 떠올려 보세요<br>대체 텍스트: 건강보험에서 돌려받는 돈은 더 낸 보험료와 상한액을 넘은 병원비 두 가지라는 도표</div></div>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">보험료 환급금</strong>: 건강보험료를 두 번 냈거나 잘못 냈을 때, 또는 직장·소득이 바뀌어 보험료를 다시 계산했더니 더 낸 돈이 있을 때 생깁니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">병원비 상한액 초과금(본인부담상한제)</strong>: 1년 동안 낸 병원비가 소득에 따라 정해진 상한액을 넘으면, 넘은 만큼 돌려줍니다. 지난해 병원비는 보통 <strong style="font-weight:700;color:#F26B1D;">다음 해 8월 무렵</strong>부터 확인할 수 있습니다.</li>
+</ol>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">2025년 진료분 초과금은 226만여 명에게 1인당 평균 136만 원이 돌아갔고, 받는 분의 절반 이상이 65세 이상이었습니다. 부모님 것도 꼭 함께 확인해 보세요.</p>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">1. 건강보험25시 앱 설치하고 로그인하기</h2>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwNjciIHZpZXdCb3g9IjAgMCAxNjAwIDEwNjciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjEwNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDMg4oCUIOyCrOynhCDrgrTroKTrsJvquLAg64yA6riwIChwaG90by0wMS5qcGcpPC90ZXh0Pjwvc3ZnPg==" alt="집에서 휴대폰을 보고 있는 중년"><div class="meta">[그림 3] 휴대폰 하나면 공단에 가지 않아도 됩니다<br>대체 텍스트: 집에서 휴대폰을 보고 있는 중년</div></div>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">Play 스토어</strong>를 열고 검색창에 <strong style="font-weight:700;color:#F26B1D;">건강보험25시</strong>를 입력합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">개발자가 <strong style="font-weight:700;color:#F26B1D;">국민건강보험공단</strong>인지 확인하고 <strong style="font-weight:700;color:#F26B1D;">설치</strong>를 누릅니다.</li>
+</ol>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDQg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDEucG5nKTwvdGV4dD48L3N2Zz4=" alt="Play 스토어에서 건강보험25시 앱을 검색한 화면"><div class="meta">[그림 4] 개발자가 국민건강보험공단인지 꼭 확인하세요<br>대체 텍스트: Play 스토어에서 건강보험25시 앱을 검색한 화면</div></div>
+<ol start="3" style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">앱을 열고 <strong style="font-weight:700;color:#F26B1D;">간편인증</strong>을 고릅니다. 평소 쓰는 카카오톡이나 네이버를 고르면 됩니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">이름, 생년월일, 휴대폰 번호를 넣고, 카카오톡(또는 네이버)으로 온 인증 요청에서 <strong style="font-weight:700;color:#F26B1D;">인증하기</strong>를 누릅니다.</li>
+</ol>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDUg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDIucG5nKTwvdGV4dD48L3N2Zz4=" alt="건강보험25시 앱에서 간편인증으로 로그인하는 화면"><div class="meta">[그림 5] 평소 쓰는 카카오톡이나 네이버 인증을 고르면 됩니다<br>대체 텍스트: 건강보험25시 앱에서 간편인증으로 로그인하는 화면</div></div>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">이렇게 되면 끝!</strong> 앱 첫 화면에 내 이름이 보이면 로그인된 것입니다.</p>
+<div style="background:#FFF4EC;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">💡 팁: 글씨가 작으면 앱의 <strong style="font-weight:700;color:#F26B1D;">간편(쉬운) 모드</strong>를 켜세요. 글자가 크고 메뉴가 단순해집니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">2. 환급금 조회하기</h2>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">로그인하면 첫 화면에 <strong style="font-weight:700;color:#F26B1D;">받을 수 있는 환급금이 있다는 안내</strong>가 뜨기도 합니다. 보이면 바로 누르세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">안내가 없다면 화면 위쪽 <strong style="font-weight:700;color:#F26B1D;">검색창</strong>에 <strong style="font-weight:700;color:#F26B1D;">환급금</strong>이라고 입력합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">환급금(지원금) 조회 및 신청</strong>을 누릅니다.</li>
+</ol>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDYg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDMucG5nKTwvdGV4dD48L3N2Zz4=" alt="건강보험25시 첫 화면 검색창에 환급금을 입력한 화면"><div class="meta">[그림 6] 검색창에 &#x27;환급금&#x27;만 입력해도 바로 찾을 수 있어요<br>대체 텍스트: 건강보험25시 첫 화면 검색창에 환급금을 입력한 화면</div></div>
+<ol start="4" style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">받을 수 있는 환급금이 있으면 <strong style="font-weight:700;color:#F26B1D;">종류와 금액</strong>이 나옵니다. 없으면 "내역이 없습니다"처럼 나옵니다.</li>
+</ol>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDcg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDQucG5nKTwvdGV4dD48L3N2Zz4=" alt="받을 수 있는 환급금 내역이 나온 화면"><div class="meta">[그림 7] 환급 종류가 보이면 신청할 수 있습니다<br>대체 텍스트: 받을 수 있는 환급금 내역이 나온 화면</div></div>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: "내역 없음"이 나와도 지난해 병원비 초과금은 <strong style="font-weight:700;color:#F26B1D;">8월 이후에</strong> 조회되기 시작합니다. 여름이 지나면 한 번 더 확인해 보세요.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">3. 환급금 신청하기</h2>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">환급금 내역에서 <strong style="font-weight:700;color:#F26B1D;">신청</strong>을 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">돈을 받을 <strong style="font-weight:700;color:#F26B1D;">본인 명의 은행</strong>을 고르고 <strong style="font-weight:700;color:#F26B1D;">계좌번호</strong>를 입력합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">앞으로 생기는 환급금도 이 계좌로 받겠다는 항목이 있으면 <strong style="font-weight:700;color:#F26B1D;">동의</strong>해 두세요. 다음부터는 따로 신청하지 않아도 들어옵니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">내용을 확인하고 <strong style="font-weight:700;color:#F26B1D;">신청하기</strong>를 누릅니다.</li>
+</ol>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjE5MjAiIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxMDU2IiBoZWlnaHQ9IjE4OTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OSIgZmlsbD0iIzY2NiI+6re466a8IDgg4oCUIOyngeygkSDsuqHsspgg64yA6riwIChjMDUucG5nKTwvdGV4dD48L3N2Zz4=" alt="환급금을 받을 계좌를 입력하고 신청하는 화면"><div class="meta">[그림 8] 계좌는 반드시 본인 명의로 입력하세요<br>대체 텍스트: 환급금을 받을 계좌를 입력하고 신청하는 화면</div></div>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">이렇게 되면 끝!</strong> 신청 완료 화면이 나오면 성공입니다. 며칠 안에 입력한 계좌로 들어옵니다.</p>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">휴대폰이 어렵다면</h2>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">전화</strong>: 국민건강보험공단 고객센터 <strong style="font-weight:700;color:#F26B1D;">1577-1000</strong></li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">방문</strong>: 가까운 국민건강보험공단 지사 (신분증 지참)</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">컴퓨터</strong>: 국민건강보험공단 홈페이지(www.nhis.or.kr)에서 <strong style="font-weight:700;color:#F26B1D;">환급금 조회/신청</strong></li>
+</ul>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">환급금 문자, 진짜인지 확인하는 법</h2>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxNjAwIDEyMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjExNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDkg4oCUIEdQVCDsnpHsl4Ug64yA6riwICgwMy5wbmcpPC90ZXh0Pjwvc3ZnPg==" alt="공단 진짜 안내 문자에는 링크가 없고 가짜 문자에는 링크가 있다는 비교 그림"><div class="meta">[그림 9] 링크가 있는 환급금 문자는 누르지 마세요<br>대체 텍스트: 공단 진짜 안내 문자에는 링크가 없고 가짜 문자에는 링크가 있다는 비교 그림</div></div>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">환급금 소식이 많아지면 공단을 흉내 낸 <strong style="font-weight:700;color:#F26B1D;">가짜 문자(스미싱)</strong>도 늘어납니다.</p>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">공단은 환급금 안내 문자에 <strong style="font-weight:700;color:#F26B1D;">인터넷 주소(링크)를 넣지 않습니다.</strong></li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">"오늘 마감", "지금 바로 확인" 같은 말로 서두르게 하면 의심하세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">확인은 문자 속 링크가 아니라, <strong style="font-weight:700;color:#F26B1D;">직접 설치한 건강보험25시 앱</strong>이나 <strong style="font-weight:700;color:#F26B1D;">1577-1000</strong>으로 하세요.</li>
+</ul>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: 이미 링크를 눌렀거나 개인정보를 입력했다면, 휴대폰 백신으로 검사하고 한국인터넷진흥원 <strong style="font-weight:700;color:#F26B1D;">118</strong>에 신고하세요. 은행 앱 비밀번호도 바꾸는 것이 좋습니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">부모님 환급금을 챙겨 드리는 자녀분께</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">환급금 조회와 신청은 <strong style="font-weight:700;color:#F26B1D;">본인 인증</strong>으로 합니다. 부모님 휴대폰에 앱을 깔아 드리고, 부모님이 직접 인증 버튼을 누르시게 도와드리는 방법이 가장 간단합니다. 계좌는 반드시 <strong style="font-weight:700;color:#F26B1D;">부모님 명의 계좌</strong>로 넣어야 합니다.</p>
+<div class="figure"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwNjciIHZpZXdCb3g9IjAgMCAxNjAwIDEwNjciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNFRUVFRUUiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNTc2IiBoZWlnaHQ9IjEwNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtZGFzaGFycmF5PSIyNCAxNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0iIzY2NiI+6re466a8IDEwIOKAlCDsgqzsp4Qg64K066Ck67Cb6riwIOuMgOq4sCAocGhvdG8tMDIuanBnKTwvdGV4dD48L3N2Zz4=" alt="딸이 어머니에게 휴대폰 사용법을 알려 주는 모습"><div class="meta">[그림 10] 인증 버튼은 부모님이 직접 누르시게 도와드리세요<br>대체 텍스트: 딸이 어머니에게 휴대폰 사용법을 알려 주는 모습</div></div>
+<hr style="border:none;border-top:1px solid #ddd;margin:32px 0;" />
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">혹시 생각지도 못한 환급금을 찾으신 적이 있나요? 여러분의 경험이 궁금합니다.</p>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">참고한 곳</strong>
+- 국민건강보험공단 홈페이지 www.nhis.or.kr / 고객센터 1577-1000
+- 국민건강보험공단, 건강보험25시 앱 출시 안내 (2026.3)
+- 국민건강보험공단, 환급금 집중 지급 기간 안내 (2026.10)
+- 한국인터넷진흥원 불법스팸대응센터 118</p></div>
+  </div>
+</div>
+<div id="copy-src" style="position:absolute;left:-99999px;top:0;width:700px;" aria-hidden="true"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">병원비를 많이 낸 해가 있었거나, 직장을 옮기거나 그만둔 적이 있다면 <strong style="font-weight:700;color:#F26B1D;">돌려받을 건강보험 돈</strong>이 있을 수 있습니다. 그런데 직접 신청하지 않으면 들어오지 않는 경우가 많고, <strong style="font-weight:700;color:#F26B1D;">3년이 지나면 받을 수 없게 됩니다.</strong> 이 글을 따라 하면 휴대폰으로 5분 안에 확인하고 신청까지 끝낼 수 있습니다.</p>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 1] 이 자리에 그림을 넣으세요</p>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">먼저 결론부터</h2>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">어디서?</strong> 국민건강보험공단 앱 <strong style="font-weight:700;color:#F26B1D;">건강보험25시</strong>에서 조회하고 신청합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">무엇이 필요?</strong> 본인 휴대폰, 간편인증(카카오·네이버 등), <strong style="font-weight:700;color:#F26B1D;">본인 명의 통장 계좌번호</strong>.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">언제까지?</strong> 환급금이 생긴 날부터 <strong style="font-weight:700;color:#F26B1D;">3년 안에</strong> 신청해야 합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">조심할 것</strong> 공단은 환급금 안내 문자에 <strong style="font-weight:700;color:#F26B1D;">인터넷 주소(링크)를 넣지 않습니다.</strong> 링크가 있는 문자는 누르지 마세요.</li>
+</ul>
+<div style="background:#FFF4EC;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">💡 팁: 예전에 쓰던 <strong style="font-weight:700;color:#F26B1D;">The건강보험</strong> 앱이 2026년 3월에 <strong style="font-weight:700;color:#F26B1D;">건강보험25시</strong>로 바뀌었습니다. 이미 깔려 있다면 업데이트만 하면 됩니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">돌려받는 돈은 두 가지예요</h2>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 2] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">내 경우가 어디에 해당하는지 먼저 떠올려 보세요</p>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">보험료 환급금</strong>: 건강보험료를 두 번 냈거나 잘못 냈을 때, 또는 직장·소득이 바뀌어 보험료를 다시 계산했더니 더 낸 돈이 있을 때 생깁니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">병원비 상한액 초과금(본인부담상한제)</strong>: 1년 동안 낸 병원비가 소득에 따라 정해진 상한액을 넘으면, 넘은 만큼 돌려줍니다. 지난해 병원비는 보통 <strong style="font-weight:700;color:#F26B1D;">다음 해 8월 무렵</strong>부터 확인할 수 있습니다.</li>
+</ol>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">2025년 진료분 초과금은 226만여 명에게 1인당 평균 136만 원이 돌아갔고, 받는 분의 절반 이상이 65세 이상이었습니다. 부모님 것도 꼭 함께 확인해 보세요.</p>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">1. 건강보험25시 앱 설치하고 로그인하기</h2>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 3] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">휴대폰 하나면 공단에 가지 않아도 됩니다</p>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">Play 스토어</strong>를 열고 검색창에 <strong style="font-weight:700;color:#F26B1D;">건강보험25시</strong>를 입력합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">개발자가 <strong style="font-weight:700;color:#F26B1D;">국민건강보험공단</strong>인지 확인하고 <strong style="font-weight:700;color:#F26B1D;">설치</strong>를 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 4] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">개발자가 국민건강보험공단인지 꼭 확인하세요</p>
+<ol start="3" style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">앱을 열고 <strong style="font-weight:700;color:#F26B1D;">간편인증</strong>을 고릅니다. 평소 쓰는 카카오톡이나 네이버를 고르면 됩니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">이름, 생년월일, 휴대폰 번호를 넣고, 카카오톡(또는 네이버)으로 온 인증 요청에서 <strong style="font-weight:700;color:#F26B1D;">인증하기</strong>를 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 5] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">평소 쓰는 카카오톡이나 네이버 인증을 고르면 됩니다</p>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">이렇게 되면 끝!</strong> 앱 첫 화면에 내 이름이 보이면 로그인된 것입니다.</p>
+<div style="background:#FFF4EC;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">💡 팁: 글씨가 작으면 앱의 <strong style="font-weight:700;color:#F26B1D;">간편(쉬운) 모드</strong>를 켜세요. 글자가 크고 메뉴가 단순해집니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">2. 환급금 조회하기</h2>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">로그인하면 첫 화면에 <strong style="font-weight:700;color:#F26B1D;">받을 수 있는 환급금이 있다는 안내</strong>가 뜨기도 합니다. 보이면 바로 누르세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">안내가 없다면 화면 위쪽 <strong style="font-weight:700;color:#F26B1D;">검색창</strong>에 <strong style="font-weight:700;color:#F26B1D;">환급금</strong>이라고 입력합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">환급금(지원금) 조회 및 신청</strong>을 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 6] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">검색창에 &#x27;환급금&#x27;만 입력해도 바로 찾을 수 있어요</p>
+<ol start="4" style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">받을 수 있는 환급금이 있으면 <strong style="font-weight:700;color:#F26B1D;">종류와 금액</strong>이 나옵니다. 없으면 "내역이 없습니다"처럼 나옵니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 7] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">환급 종류가 보이면 신청할 수 있습니다</p>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: "내역 없음"이 나와도 지난해 병원비 초과금은 <strong style="font-weight:700;color:#F26B1D;">8월 이후에</strong> 조회되기 시작합니다. 여름이 지나면 한 번 더 확인해 보세요.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">3. 환급금 신청하기</h2>
+<ol style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">환급금 내역에서 <strong style="font-weight:700;color:#F26B1D;">신청</strong>을 누릅니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">돈을 받을 <strong style="font-weight:700;color:#F26B1D;">본인 명의 은행</strong>을 고르고 <strong style="font-weight:700;color:#F26B1D;">계좌번호</strong>를 입력합니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">앞으로 생기는 환급금도 이 계좌로 받겠다는 항목이 있으면 <strong style="font-weight:700;color:#F26B1D;">동의</strong>해 두세요. 다음부터는 따로 신청하지 않아도 들어옵니다.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">내용을 확인하고 <strong style="font-weight:700;color:#F26B1D;">신청하기</strong>를 누릅니다.</li>
+</ol>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 8] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">계좌는 반드시 본인 명의로 입력하세요</p>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">이렇게 되면 끝!</strong> 신청 완료 화면이 나오면 성공입니다. 며칠 안에 입력한 계좌로 들어옵니다.</p>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">휴대폰이 어렵다면</h2>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">전화</strong>: 국민건강보험공단 고객센터 <strong style="font-weight:700;color:#F26B1D;">1577-1000</strong></li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">방문</strong>: 가까운 국민건강보험공단 지사 (신분증 지참)</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">컴퓨터</strong>: 국민건강보험공단 홈페이지(www.nhis.or.kr)에서 <strong style="font-weight:700;color:#F26B1D;">환급금 조회/신청</strong></li>
+</ul>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">환급금 문자, 진짜인지 확인하는 법</h2>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 9] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">링크가 있는 환급금 문자는 누르지 마세요</p>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">환급금 소식이 많아지면 공단을 흉내 낸 <strong style="font-weight:700;color:#F26B1D;">가짜 문자(스미싱)</strong>도 늘어납니다.</p>
+<ul style="margin:0 0 18px;padding-left:28px;">
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">공단은 환급금 안내 문자에 <strong style="font-weight:700;color:#F26B1D;">인터넷 주소(링크)를 넣지 않습니다.</strong></li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">"오늘 마감", "지금 바로 확인" 같은 말로 서두르게 하면 의심하세요.</li>
+<li style="font-size:19px;line-height:1.9;margin:0 0 10px;color:#222;">확인은 문자 속 링크가 아니라, <strong style="font-weight:700;color:#F26B1D;">직접 설치한 건강보험25시 앱</strong>이나 <strong style="font-weight:700;color:#F26B1D;">1577-1000</strong>으로 하세요.</li>
+</ul>
+<div style="background:#F3F5FA;border-radius:10px;padding:16px 18px;margin:20px 0;"><p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;margin:0;">⚠️ 주의: 이미 링크를 눌렀거나 개인정보를 입력했다면, 휴대폰 백신으로 검사하고 한국인터넷진흥원 <strong style="font-weight:700;color:#F26B1D;">118</strong>에 신고하세요. 은행 앱 비밀번호도 바꾸는 것이 좋습니다.</p></div>
+<h2 style="font-size:24px;font-weight:700;color:#1F2A44;margin:36px 0 14px;padding-left:12px;border-left:6px solid #F26B1D;line-height:1.5;">부모님 환급금을 챙겨 드리는 자녀분께</h2>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">환급금 조회와 신청은 <strong style="font-weight:700;color:#F26B1D;">본인 인증</strong>으로 합니다. 부모님 휴대폰에 앱을 깔아 드리고, 부모님이 직접 인증 버튼을 누르시게 도와드리는 방법이 가장 간단합니다. 계좌는 반드시 <strong style="font-weight:700;color:#F26B1D;">부모님 명의 계좌</strong>로 넣어야 합니다.</p>
+<p style="font-size:17px;line-height:1.6;margin:22px 0;padding:14px;text-align:center;background:#EEE;border:2px dashed #999;border-radius:8px;color:#555;">[그림 10] 이 자리에 그림을 넣으세요</p><p style="font-size:16px;line-height:1.6;margin:-8px 0 22px;text-align:center;color:#777;">인증 버튼은 부모님이 직접 누르시게 도와드리세요</p>
+<hr style="border:none;border-top:1px solid #ddd;margin:32px 0;" />
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;">혹시 생각지도 못한 환급금을 찾으신 적이 있나요? 여러분의 경험이 궁금합니다.</p>
+<p style="font-size:19px;line-height:1.9;margin:0 0 16px;color:#222;"><strong style="font-weight:700;color:#F26B1D;">참고한 곳</strong>
+- 국민건강보험공단 홈페이지 www.nhis.or.kr / 고객센터 1577-1000
+- 국민건강보험공단, 건강보험25시 앱 출시 안내 (2026.3)
+- 국민건강보험공단, 환급금 집중 지급 기간 안내 (2026.10)
+- 한국인터넷진흥원 불법스팸대응센터 118</p></div>
+<div class="toast" id="toast"></div>
+<script>
+const DATA = {"title": "건강보험 환급금 조회·신청｜건강보험25시 앱으로 5분이면 끝", "tags": "#건강보험환급금 #건강보험환급금조회 #건강보험25시 #본인부담상한제 #건강보험료환급 #환급금스미싱 #부모님환급금 #생활디지털", "plain": "병원비를 많이 낸 해가 있었거나, 직장을 옮기거나 그만둔 적이 있다면 돌려받을 건강보험 돈이 있을 수 있습니다. 그런데 직접 신청하지 않으면 들어오지 않는 경우가 많고, 3년이 지나면 받을 수 없게 됩니다. 이 글을 따라 하면 휴대폰으로 5분 안에 확인하고 신청까지 끝낼 수 있습니다.\n\n[그림 1]\n\n먼저 결론부터\n\n- 어디서? 국민건강보험공단 앱 건강보험25시에서 조회하고 신청합니다.\n- 무엇이 필요? 본인 휴대폰, 간편인증(카카오·네이버 등), 본인 명의 통장 계좌번호.\n- 언제까지? 환급금이 생긴 날부터 3년 안에 신청해야 합니다.\n- 조심할 것 공단은 환급금 안내 문자에 인터넷 주소(링크)를 넣지 않습니다. 링크가 있는 문자는 누르지 마세요.\n\n💡 팁: 예전에 쓰던 The건강보험 앱이 2026년 3월에 건강보험25시로 바뀌었습니다. 이미 깔려 있다면 업데이트만 하면 됩니다.\n\n돌려받는 돈은 두 가지예요\n\n[그림 2] 내 경우가 어디에 해당하는지 먼저 떠올려 보세요\n\n1. 보험료 환급금: 건강보험료를 두 번 냈거나 잘못 냈을 때, 또는 직장·소득이 바뀌어 보험료를 다시 계산했더니 더 낸 돈이 있을 때 생깁니다.\n2. 병원비 상한액 초과금(본인부담상한제): 1년 동안 낸 병원비가 소득에 따라 정해진 상한액을 넘으면, 넘은 만큼 돌려줍니다. 지난해 병원비는 보통 다음 해 8월 무렵부터 확인할 수 있습니다.\n\n2025년 진료분 초과금은 226만여 명에게 1인당 평균 136만 원이 돌아갔고, 받는 분의 절반 이상이 65세 이상이었습니다. 부모님 것도 꼭 함께 확인해 보세요.\n\n1. 건강보험25시 앱 설치하고 로그인하기\n\n[그림 3] 휴대폰 하나면 공단에 가지 않아도 됩니다\n\n1. Play 스토어를 열고 검색창에 건강보험25시를 입력합니다.\n2. 개발자가 국민건강보험공단인지 확인하고 설치를 누릅니다.\n\n[그림 4] 개발자가 국민건강보험공단인지 꼭 확인하세요\n\n3. 앱을 열고 간편인증을 고릅니다. 평소 쓰는 카카오톡이나 네이버를 고르면 됩니다.\n4. 이름, 생년월일, 휴대폰 번호를 넣고, 카카오톡(또는 네이버)으로 온 인증 요청에서 인증하기를 누릅니다.\n\n[그림 5] 평소 쓰는 카카오톡이나 네이버 인증을 고르면 됩니다\n\n이렇게 되면 끝! 앱 첫 화면에 내 이름이 보이면 로그인된 것입니다.\n\n💡 팁: 글씨가 작으면 앱의 간편(쉬운) 모드를 켜세요. 글자가 크고 메뉴가 단순해집니다.\n\n2. 환급금 조회하기\n\n1. 로그인하면 첫 화면에 받을 수 있는 환급금이 있다는 안내가 뜨기도 합니다. 보이면 바로 누르세요.\n2. 안내가 없다면 화면 위쪽 검색창에 환급금이라고 입력합니다.\n3. 환급금(지원금) 조회 및 신청을 누릅니다.\n\n[그림 6] 검색창에 '환급금'만 입력해도 바로 찾을 수 있어요\n\n4. 받을 수 있는 환급금이 있으면 종류와 금액이 나옵니다. 없으면 \"내역이 없습니다\"처럼 나옵니다.\n\n[그림 7] 환급 종류가 보이면 신청할 수 있습니다\n\n⚠️ 주의: \"내역 없음\"이 나와도 지난해 병원비 초과금은 8월 이후에 조회되기 시작합니다. 여름이 지나면 한 번 더 확인해 보세요.\n\n3. 환급금 신청하기\n\n1. 환급금 내역에서 신청을 누릅니다.\n2. 돈을 받을 본인 명의 은행을 고르고 계좌번호를 입력합니다.\n3. 앞으로 생기는 환급금도 이 계좌로 받겠다는 항목이 있으면 동의해 두세요. 다음부터는 따로 신청하지 않아도 들어옵니다.\n4. 내용을 확인하고 신청하기를 누릅니다.\n\n[그림 8] 계좌는 반드시 본인 명의로 입력하세요\n\n이렇게 되면 끝! 신청 완료 화면이 나오면 성공입니다. 며칠 안에 입력한 계좌로 들어옵니다.\n\n휴대폰이 어렵다면\n\n- 전화: 국민건강보험공단 고객센터 1577-1000\n- 방문: 가까운 국민건강보험공단 지사 (신분증 지참)\n- 컴퓨터: 국민건강보험공단 홈페이지(www.nhis.or.kr)에서 환급금 조회/신청\n\n환급금 문자, 진짜인지 확인하는 법\n\n[그림 9] 링크가 있는 환급금 문자는 누르지 마세요\n\n환급금 소식이 많아지면 공단을 흉내 낸 가짜 문자(스미싱)도 늘어납니다.\n\n- 공단은 환급금 안내 문자에 인터넷 주소(링크)를 넣지 않습니다.\n- \"오늘 마감\", \"지금 바로 확인\" 같은 말로 서두르게 하면 의심하세요.\n- 확인은 문자 속 링크가 아니라, 직접 설치한 건강보험25시 앱이나 1577-1000으로 하세요.\n\n⚠️ 주의: 이미 링크를 눌렀거나 개인정보를 입력했다면, 휴대폰 백신으로 검사하고 한국인터넷진흥원 118에 신고하세요. 은행 앱 비밀번호도 바꾸는 것이 좋습니다.\n\n부모님 환급금을 챙겨 드리는 자녀분께\n\n환급금 조회와 신청은 본인 인증으로 합니다. 부모님 휴대폰에 앱을 깔아 드리고, 부모님이 직접 인증 버튼을 누르시게 도와드리는 방법이 가장 간단합니다. 계좌는 반드시 부모님 명의 계좌로 넣어야 합니다.\n\n[그림 10] 인증 버튼은 부모님이 직접 누르시게 도와드리세요\n\n혹시 생각지도 못한 환급금을 찾으신 적이 있나요? 여러분의 경험이 궁금합니다.\n\n참고한 곳\n- 국민건강보험공단 홈페이지 www.nhis.or.kr / 고객센터 1577-1000\n- 국민건강보험공단, 건강보험25시 앱 출시 안내 (2026.3)\n- 국민건강보험공단, 환급금 집중 지급 기간 안내 (2026.10)\n- 한국인터넷진흥원 불법스팸대응센터 118\n"};
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(window.__t); window.__t = setTimeout(() => t.classList.remove('on'), 1800);
+}
+function fallbackCopy(node) {
+  const sel = window.getSelection(); const range = document.createRange();
+  range.selectNodeContents(node); sel.removeAllRanges(); sel.addRange(range);
+  let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+  sel.removeAllRanges(); return ok;
+}
+async function copyText(key) {
+  const text = DATA[key];
+  try { await navigator.clipboard.writeText(text); toast('복사했습니다'); return; } catch (e) {}
+  const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
+  ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+  ta.remove(); toast(ok ? '복사했습니다' : '복사에 실패했습니다. 직접 선택해 복사해 주세요');
+}
+async function copyRich() {
+  const node = document.getElementById('copy-src');
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([node.innerHTML], {type: 'text/html'}),
+      'text/plain': new Blob([DATA.plain], {type: 'text/plain'})
+    })]);
+    toast('본문을 서식과 함께 복사했습니다'); return;
+  } catch (e) {}
+  toast(fallbackCopy(node) ? '본문을 서식과 함께 복사했습니다' : '복사에 실패했습니다');
+}
+</script>
+</body>
+</html>
